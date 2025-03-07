@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Up Your Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(to bottom right, #f9dcdc, #fefaf5, #fdeee0, #f9dcdc);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 80%;
+            max-width: 350px; /* Pehle 450px tha, ab chhota kar diya */
+            background: white;
+            padding: 20px; /* Pehle 30px tha, ab kam kiya */
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        img {
+            width: 100%;
+            max-width: 250px;
+            margin-bottom: 15px;
+        }
+        .btn {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            font-size: 18px;
+            color: white;
+            background-color: #f78b8b;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+        }
+        .btn:hover {
+            background-color: #e86b5a;
+        }
+        .footer {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid #ddd;
+        }
+        .footer a {
+            text-decoration: none;
+            color: gray;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Set Up Your Tracker</h2>
+        <img src="SetUp.png" alt="Tracker Image">
+        
+        <button class="btn" onclick="trackPeriod()">Period Mode<br><small>Track My Cycle</small></button>
+        <button class="btn" onclick="trackPregnancy()">Pregnancy Mode<br><small>Track My Pregnancy</small></button>
+        
+        
+    </div>
+    
+    <script>
+        function trackPeriod() {
+            alert("Navigating to Period Tracker");
+             window.location.href = 'date.html';
+        }
+        function trackPregnancy() {
+            alert("Navigating to Pregnancy Tracker");
+             window.location.href = 'home-preg.html';
+        }
+    </script>
+</body>
+</html>

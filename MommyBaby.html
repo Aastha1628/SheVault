@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Bootstrap Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+ <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+        
+        body {
+            background: linear-gradient(to bottom right, #f9dcdc, #fefaf5, #fdeee0, #f9dcdc);
+            transition: filter 0.3s ease;
+        }
+        
+        .blur {
+            filter: blur(5px);
+        }
+        
+        .header-image {
+            width: 90%;
+            height: 450px;
+            background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2)), 
+                        url('https://static.vecteezy.com/system/resources/previews/025/078/664/large_2x/a-mother-love-embracing-her-newborn-baby-girl-pure-happiness-generated-by-ai-free-photo.jpg') no-repeat center center/cover;
+            margin: 70px auto 20px auto;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 50px;
+            font-weight: normal;
+            text-transform: none;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            padding: 20px;
+        }
+        .header-image span {
+            font-family: 'Cookie', cursive;
+            letter-spacing: 1px;
+        }
+        .product-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+        }
+        .product-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .product-name {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .product-price {
+            color: #e86b5a;
+            font-size: 18px;
+        }
+        
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .popup-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 400px;
+        }
+        .popup img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .popup-description {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+        .buy-btn {
+            background: #e86b5a;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .close-btn {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        
+    
+        .custom-navbar {
+    background-color: #fff; /* Light background */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    
+    height: 60px; /* Adjust height */
+    padding: 5px 0;
+    display: flex;
+    align-items: center;
+}
+.custom-navbar .navbar-brand {
+    font-family: 'Cookie', cursive;
+    font-size: 50px;
+    font-weight: bold;
+    color: #e86b5a; /* Apply the color to the text */
+}
+
+
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background: white;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    bottom: 50px;
+    width: 100%;
+}
+
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: white;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+
+.bottom-nav a {
+    flex: 1;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+}
+
+.bottom-nav a i {
+    display: block;
+    font-size: 20px;
+}
+
+.text-danger {
+    color: red;
+}
+.bottom-nav a.active {
+    background-color: #f0f0f0;
+    color: #117a7a;
+}
+
+
+    </style>
+
+<!-- Jotform bot library -->
+<script src="https://cdn.jotfor.ms/s/umd/latest/for-embedded-agent.js"></script>
+
+</head>
+<body>
+
+<!-- Jotform bot initialization -->
+<script>
+    window.addEventListener("DOMContentLoaded", function() {
+        window.AgentInitializer.init({
+            rootId: "JotformAgent-019567739bdd7a048af8e9b6c89ee6e09dd0",
+            formID: "019567739bdd7a048af8e9b6c89ee6e09dd0",
+            queryParams: ["skipWelcome=1", "maximizable=1"],
+            domain: "https:\/\/www.jotform.com",
+            isInitialOpen: false,
+            isDraggable: false,
+            background: "linear-gradient(180deg, #C8CEED 0%, #C8CEED 100%)",
+            buttonBackgroundColor: "#0a1551",
+            buttonIconColor: "#fff",
+            variant: false,
+            customizations: {
+                greeting: "Yes",
+                greetingMessage: "Hi! How can I assist you?",
+                pulse: "Yes",
+                position: "right"
+            }
+        });
+    });
+</script>
+
+    <nav class="navbar custom-navbar">
+        <div class="container">
+            <a class="navbar-brand">Pharmacy</a>
+        </div>
+    </nav>
+    <div class="header-image"><span>There is no such thing as a MOM <br> who has it all together.</span></div>
+    <div class="container">
+        <br><br>
+        <h3>Mommy Products</h3>
+        <div class="row" id="mommy-products">
+            <div class="col-md-3">
+                <div class="product-card" onclick="openPopup('Prenatal Vitamins', '₹500', 'https://m.media-amazon.com/images/I/71UxDmU31AL._AC_UL480_FMwebp_QL65_.jpg', 'A supplement providing essential nutrients for pregnant women to support health and development.', 'Ideal for pregnant women looking for a complete vitamin supplement to support pregnancy health.', 'Contains essential vitamins and minerals like folic acid, iron, and calcium for maternal and fetal health.', 'https://www.amazon.in/Spellbound-Prenatal-Multivitamin-Pregnancy-Choline/dp/B0CGSLTW5S/ref=sr_1_1_sspa?crid=19U9R4X4TWCGS&dib=eyJ2IjoiMSJ9.WlkVb8uJ8SdU80O9jg3-BgEq9WvG1fawB2EkSMW7jVSgZTh-Sh-S6c22aTfAqjPbO4gWHn0n6TbLepkafEE_b8DPhsVkCgIkRxZ7VWeKX0uimxBRNLxXd9Lu5GXnKFUPO290dHHEBjx5xZXSq_pFw2R5kf-wBVYlLmrHMBGdgWJ3zNk7xuEl7dpdT1MoH71i0AtXLIKhIfemWOMFLPFeGDwyWtx-5idB8ZRfDqHV6383yYmO7brIY-tj3QfrRvy-eHEkkGH5MjvpQjU3NgPt9hOP9QOVN3TPKCX3w9Vc-tE.uLCtNHAjE-zOK3DXmppXXXZlJudGRxIo58Pd3h5X72M&dib_tag=se&keywords=Prenatal+Vitamins&qid=1741201780&sprefix=prenatal+vitamins%2Caps%2C529&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1')">
+                    <img src="https://m.media-amazon.com/images/I/71UxDmU31AL._AC_UL480_FMwebp_QL65_.jpg" alt="Prenatal Vitamins">
+                    <div class="product-name">Prenatal Vitamins</div>
+                    <div class="product-price">₹500</div>
+                   
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="product-card" onclick="openPopup('Stretch Mark Cream', '₹350', 'https://m.media-amazon.com/images/I/41+1dGm3R0L._SY300_SX300_.jpg', 'A cream designed to reduce the appearance of stretch marks during and after pregnancy.', 'Ideal for expecting and new mothers who want to minimize stretch marks.', 'Formulated with natural ingredients that hydrate and support skin elasticity to prevent and reduce stretch marks.', 'https://www.amazon.in/Anti-stretch-stretchmarks-paraben-free-non-fragrant-non-colourant/dp/B09B9G6KQB/ref=sr_1_1_sspa?crid=3QG5W9WT5KT5X&dib=eyJ2IjoiMSJ9.bfo-H0BMRlMDvciJhl3u0VgGkkUVHfWZZSiCyvlujjR-36iP9z5EWMVbiI1T7ZmWO93yLFCb5XgKszvY3mOR9bKfPs-_UdgfhoIabvrz5yPezNLEC-9zFkfvYH2bDiYGngKfrwt8K9OwEd2i3KxcoCH4sRPZNhdt0cVoIE0jmHyscVARxXbn5eCaH1SZov-rYNmt2UU9Zy_o6zdpjXDTI1ftnDQbuyJOicbsJrNFNAz9A823iUkmj2UqqjdUFyiN-8_V1g9y3huSGavh9LJV4thPdXzTt0FPDQAxBqRQ6Qw.KZRRl1SDKVeMWvLANlMMPls9Nuc0-kMm7IUNqIZxx8Y&dib_tag=se&keywords=Stretch%2BMark%2BCream&qid=1741201828&sprefix=%2Caps%2C864&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1')">
+                    <img src="https://m.media-amazon.com/images/I/41+1dGm3R0L._SY300_SX300_.jpg" alt="Stretch Mark Cream">
+                    <div class="product-name">Stretch Mark Cream</div>
+                    <div class="product-price">₹350</div>
+                    
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="product-card" onclick="openPopup('Nursing Pillow', '₹800', 'https://m.media-amazon.com/images/I/71ABegiWUHL._AC_UL480_FMwebp_QL65_.jpg', 'A comfortable pillow designed to help support a mother during breastfeeding and provide comfort for the baby.', 'Ideal for new mothers looking for support during breastfeeding sessions.', 'Provides ergonomic support for both mother and baby during nursing, reducing strain on the back and arms.', 'https://www.amazon.in/s?k=Nursing+Pillow&crid=3K8K26623FXX3&sprefix=%2Caps%2C682&ref=nb_sb_noss_2')">
+                    <img src="https://m.media-amazon.com/images/I/71ABegiWUHL._AC_UL480_FMwebp_QL65_.jpg" alt="Nursing Pillow">
+                    <div class="product-name">Nursing Pillow</div>
+                    <div class="product-price">₹800</div>
+                   
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="product-card" onclick="openPopup('Organic Herbal Tea', '₹250', 'https://m.media-amazon.com/images/I/71ebSESQIgL._AC_UL480_FMwebp_QL65_.jpg', 'A soothing organic herbal tea designed to promote relaxation and comfort during pregnancy.', 'Ideal for pregnant women looking for a calming and caffeine-free beverage.', 'Contains a blend of organic herbs that support relaxation and comfort during pregnancy.', 'https://www.amazon.in/LUXMI-Estates-Peppermint-Certified-Caffeine-Free/dp/B0D2NH5BXZ/ref=sr_1_1_sspa?crid=2TFUNPAKRX01H&dib=eyJ2IjoiMSJ9.lMray97bkgF6Tbvg-BBSWvPIwFKNkOXaKcTHnDW8PG2PHEggFfyWjfdRY-HO08GU6mCSSJomFDznl6GwID3gT-UG9ngCZWNsfj7jH2kIuReFsRLXc8B_l53k1G0E3S2bWcBfZ57mL6lrQbc7F5n_5U8vTtvV1qH_myOIVD-hLdBHIz0mFVBfvBdPl9Cqa1sMwjeHIGQyv3yH-O0dB0vbP3SyWI6_4P-tiZYLqCh493cvkj2vvKzUI5fw1AfhtMp1i3Ni8A022omFholxqEdfcndiH-nPX7C8mL6y5ReolM8.vPd2SDoN-b4HYFMAhGouw47J7Zt6a8022NjV8VVTru4&dib_tag=se&keywords=Organic+Herbal+Tea&nsdOptOutParam=true&qid=1741201945&sprefix=%2Caps%2C764&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1')">
+                    <img src="https://m.media-amazon.com/images/I/71ebSESQIgL._AC_UL480_FMwebp_QL65_.jpg" alt="Organic Herbal Tea">
+                    <div class="product-name">Organic Herbal Tea</div>
+                    <div class="product-price">₹250</div>
+                    
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="product-card" onclick="openPopup('Maternity Belt', '₹600', 'https://m.media-amazon.com/images/I/713aWIdy0PL._AC_UL480_FMwebp_QL65_.jpg', 'A belt designed to provide support and comfort during pregnancy by alleviating back pain and improving posture.', 'Ideal for pregnant women looking for additional support and comfort as their belly grows.', 'Adjustable and comfortable, it helps to relieve pressure on the lower back, hips, and pelvis during pregnancy.', 'https://www.amazon.in/Motherly-Natal-Belly-Adjustable-Breathable-Postpartum/dp/B0D6B8413T/ref=sr_1_1_sspa?crid=30RITLQJWYKG2&dib=eyJ2IjoiMSJ9.q1qb9-e9fOQokmFs0OZUDANX_Ad7zyN_jevO1RA575-4Mr3Hga-z6ht3AHFvVywGRegD71VMp3m43-n5gesTusl9L2zcakOrTvDemhWsAghfRSMCOsVrn2UTq2REaSeu5w-ZaAgBLzuVLO2tfCW2Y0zjmDpXxnv2y3MQ4JJ0hM_alcu7hMkPLLYUpEOFuo_oSEqWV0RdGw73pU5KFBTU8mIBam5omLeRaHTV2LVrQNj88GoStEyu1n9wxNN0eCLk0UreGqMGAJprCSjmH6x6gNV4mZUkiq2c821oUCWvLHI.BCeShW8EynsXfJ1o3dmhYhV4XMx3jAAHBFoT9PC6dRo&dib_tag=se&keywords=Maternity%2BBelt&qid=1741201994&sprefix=maternity%2Bbelt%2Caps%2C395&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1')">
+                    <img src="https://m.media-amazon.com/images/I/713aWIdy0PL._AC_UL480_FMwebp_QL65_.jpg" alt="Maternity Belt">
+                    <div class="product-name">Maternity Belt</div>
+                    <div class="product-price">₹600</div>
+        
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="product-card" onclick="openPopup('Postpartum Recovery Kit', '₹1200', 'https://m.media-amazon.com/images/I/51r39zcAvKL._AC_UL480_FMwebp_QL65_.jpg', 'A comprehensive kit to help new mothers recover after childbirth, including essentials for postpartum care.', 'Ideal for new mothers who want to ensure a smooth recovery after childbirth.', 'Includes items like postpartum pads, ice packs, abdominal binders, and soothing creams for comfort and healing.', 'https://www.amazon.in/B-Arm-Postpartum-Disposable-Underwear-Essentials/dp/B0DPG8KLQZ/ref=sr_1_1_sspa?crid=1RZYD846PZIKV&dib=eyJ2IjoiMSJ9.AIdik1j8zC38AN7Ki5xR5sYz1toBem3SCUnfIDEmbFr-FHIy8y75NRwEl0QgVc77-OZoX-JEDMofYt5JPOb0mu_Vw7An6DOGdALuMMyRAhVfyAVcAqdT85hx706LoR0nhczOXW1q28J5TVyTpyjZs55arqEP-hhFjjoIaz1GlI8QM9pze5m9aBiMED09nchVqE0DeRBbUrd8LFoEFTnj3SzXRjUZs4cApz9SobesmYIkYeQB2SubSyWxM-9HBHz4VxIJ0a-iZwZ41HbZ7O4ebIXglHmcFOcU0TeXvvpQ9Jw.DaG4RInN-vAW-BAicrwPOgbRjKA1Cz7DTNxZfGVN7YI&dib_tag=se&keywords=Postpartum+Recovery+Kit&qid=1741202042&sprefix=postpartum+recovery+kit%2Caps%2C390&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1')">
+                    <img src="https://m.media-amazon.com/images/I/51r39zcAvKL._AC_UL480_FMwebp_QL65_.jpg" alt="Postpartum Recovery Kit">
+                    <div class="product-name">Postpartum Recovery Kit</div>
+                    <div class="product-price">₹1200</div>
+                    
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="product-card" onclick="openPopup('Compression Socks', '₹450', 'https://m.media-amazon.com/images/I/715KDzIQbEL._SX569_.jpg', 'Compression socks designed to improve circulation and reduce swelling during pregnancy and postpartum recovery.', 'Ideal for pregnant and postpartum women looking to reduce swelling and improve circulation in their legs.', 'Provides gentle compression to enhance blood flow, reduce swelling, and alleviate discomfort during pregnancy and after childbirth.', 'https://www.amazon.in/NHCDFA-Compression-Outdoor-Swelling-Achilles/dp/B0D47JS1RL/ref=sr_1_2_sspa?crid=1M7PDXZI1XPF&dib=eyJ2IjoiMSJ9.mvhCYaUXpt6V0Jv_zTdDSjuOE9CHsj4Nf9WqiXdSy9eCwYThZEknbguJBbbDafYTc5Bmshae5SgDGxHXwt7QbeZFYzpKlBkwfyhCanPMBlJMXIB8Fty0xuX88uDdn7V1U6PWAnMQ7m8tV6L8ny1qRFAdQ_piydJLy7h206ukYedoIBRBLkDCSeu7liSDlGJTg2EtnTOj_uYdyNnJFbKVoGSUgQmqIT6QU8LY7_qkFNTMWybI4MRHptqGB20HZDi8PKzJlYjFx37tfwgCrfsENQYw0dAD0YSULodRzFktcgg.li1jVTdZt-BD4hfzVWlCfhmdXFrYlhJedyBTyri6e1Q&dib_tag=se&keywords=Compression+Socks&qid=1741202100&sprefix=compression+socks%2Caps%2C590&sr=8-2-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1')">
+                    <img src="https://m.media-amazon.com/images/I/715KDzIQbEL._SX569_.jpg" alt="Compression Socks">
+                    <div class="product-name">Compression Socks</div>
+                    <div class="product-price">₹450</div>
+                   
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="product-card" onclick="openPopup('Lactation Cookies', '₹300', 'https://m.media-amazon.com/images/I/81gc1btmaAL._AC_UL480_FMwebp_QL65_.jpg', 'Tasty cookies designed to help boost milk supply in breastfeeding mothers with natural ingredients like oats and fenugreek.', 'Ideal for breastfeeding mothers looking for a natural way to increase milk supply while enjoying a delicious treat.', 'Packed with ingredients known to support lactation like oats, flax seeds, and fenugreek to boost breast milk production.', 'https://www.amazon.in/Mos-Chocolate-Lactation-Preservatives-Nutrition/dp/B0CBFGXKN1/ref=sr_1_1_sspa?crid=MYWJUBWDYDL6&dib=eyJ2IjoiMSJ9.CXQZtvgdF-wPwz5fHA5wJndYdtDmTJul4UqV1QuDwJDLn06Vx2924KNXHdokzbXAEqBjaVSbmI_39x-NrEtq0AtnBzS_zzq0_kJqSE2FbY025pchBueruVtcCyIzoPWS-LO4cju4csPOycOt4S8jqma9-8lDBOcu_w1DwCwXtjWurz-o6na8Cl99ykhS8LItE1EOSUkCkKAQhermAseCSAwzYQJZFqgXC2nNXR02r5_Is_IfZQN30KfqK9MeBbnFOhsLuW0kijnmtOjL-wpqz3ewSn8Uc8gSlv6M6IXXR64.kD2IAvCcB8L4R4Uwh9wACo6-B_Kd8JQV9PPCiwgtR9g&dib_tag=se&keywords=Lactation+Cookies&nsdOptOutParam=true&qid=1741202160&sprefix=%2Caps%2C760&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1')">
+                    <img src="https://m.media-amazon.com/images/I/81gc1btmaAL._AC_UL480_FMwebp_QL65_.jpg" alt="Lactation Cookies">
+                    <div class="product-name">Lactation Cookies</div>
+                    <div class="product-price">₹300</div>
+                 
+                </div>
+            </div>
+            
+              </div>
+        <br><br>
+        <h3>Baby Products</h3>
+        <div class="row" id="baby-products">
+            <div class="col-md-3">
+                <div class="product-card" onclick="openPopup('Baby Shampoo', '₹200', 'https://m.media-amazon.com/images/I/31pRwP2uVRL._SX300_SY300_QL70_FMwebp_.jpg', 'Gentle and mild shampoo specially formulated for babies, keeping their hair soft and clean without irritation.', 'Ideal for parents looking for a safe and gentle shampoo for their babies.', 'Hypoallergenic and free from harsh chemicals, perfect for daily use on babies\' delicate skin and hair.', 'https://www.amazon.in/Mamaearth-Gentle-Cleansing-Natural-Shampoo/dp/B077HZHB45/ref=sr_1_2_f3_0o_fs_sspa?crid=Q650CH02CNMN&dib=eyJ2IjoiMSJ9.kJ1R6N_7OBktZCgBLfMSLIM1V8pHjoR9NhwiquLAUBjtafBF6wd2Yijf3DyQtMg_tIm9wT0ZdusMBGnqbNRzLst0AM4Kjs7nPeHEqZUUYXPEhK2WWTAsVKEnIHkwakHrCTyEZx8Ps0kz_4dF3_hva8qGZuKSr1j3CwWeE__4WEGlw2wVU7IqWl4ELFSZleEpbjxu7LsxIepBoUsXCt7tBYqMd0Q9ADHeuENrrmlzdoYiwWCmxoQqK4qCyiC_aZHGs94UoPbb-A1Or1u21UhDRA9mQLOMKkilX9ktaHPEE7I.DGBUzFQk_3Rz38oiehqFpumUJdwEidUQWVvHvYVrpSA&dib_tag=se&keywords=Baby%2Bshampoo&qid=1741202512&sprefix=baby%2Bshampoo%2Caps%2C570&sr=8-2-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1')">
+                    <img src="https://m.media-amazon.com/images/I/31pRwP2uVRL._SX300_SY300_QL70_FMwebp_.jpg" alt="Baby Shampoo">
+                    <div class="product-name">Baby Shampoo</div>
+                    <div class="product-price">₹200</div>
+                 
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="product-card" onclick="openPopup('Baby Lotion', '₹180', 'https://m.media-amazon.com/images/I/51O2LRb3WUL._AC_UL480_FMwebp_QL65_.jpg', 'Nourishing lotion for babies, designed to keep their skin soft and hydrated throughout the day.', 'Ideal for parents looking to keep the moisturized.','Aveeno Baby Lotion with active natural oats formula which protects and nourishes sensitive skin for 24 hours With soothing natural Oat Extract','https://www.amazon.in/Aveeno-dimethicone-Hypoallergenic-Fragrance-Free-Pediatrician/dp/B0DCVHBF1G/ref=sr_1_1_sspa?crid=1NBYIZRL68TF9&dib=eyJ2IjoiMSJ9.zjUvyPvTGl8DJxmbzcYZiQvNW0-t5YRXryXCBmRrwwV2oEDiQChWW888tcE48emIN1I9Lz5KrCCU2RVV6uFC5vK6nUf8yCv4-atmamAuiA6mKP3kSh_fz8cBcWuRTnIwMc27v4lg4Vqc8MHEXW5Q2AGjBnKtpLlDGw92dVOmJCngseJNV8n8zLpymixj2ukjMWW1VJVgrTl2Loddmso5rlZe4DhNGgptgBl-YUiLbMqP6nE8xxfyniQ12ldeSd_p85xWdc2VrzCgAlFQ5EskfwO_9Ooe-44D6hSvnMIrRtQ.kTZFOHu-G_34vMZSum7SYM9TEIoToZ-ckkf4RG9Fc5E&dib_tag=se&keywords=Baby%2Blotion&qid=1741202589&sprefix=baby%2Blotion%2Caps%2C579&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1')">
+                    <img src="https://m.media-amazon.com/images/I/51O2LRb3WUL._AC_UL480_FMwebp_QL65_.jpg" alt="Baby Lotion">
+                    <div class="product-name">Baby Lotion</div>
+                    <div class="product-price">₹180</div>
+                   
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="product-card" onclick="openPopup('Diaper Rash Cream', '₹300', 'https://m.media-amazon.com/images/I/41snY+sZS1L._SY300_SX300_.jpg', 'Protects your baby’s skin from diaper rashes and irritation, keeping it soft and healthy.', 'Ideal for parents looking for effective relief from diaper rash.', 'Contains soothing ingredients that prevent diaper rash and promote healing for sensitive skin.', 'https://www.amazon.in/Fixderma-Panthenol-Prevent-Irritation-Dermatologist/dp/B0DVLSPB1R/ref=sr_1_1_sspa?crid=5L2XN66VOOSP&dib=eyJ2IjoiMSJ9.Wz7gveB-qj6FmXExxU9aVQ3Z0MrxOwPYBlI4UqMCU9GhI8xnQeAmegaNzsmAvm72RXm3omG45SPfeiLqP_yCkvWyYA-NTr7BkGKrigUOkB9Wc9RzkV7HTctlaRLoXlNC-rsff_zinStKdNHKwu5Q2dbuRHhYeMWXWgaT4MbXaLP7v57U3RCAzDNmWNvfiLfQWiWfYWfE-S8LGJTgU4m7pLBuZrLynGB1rzEoBI71_aREvAtTppeNwpyBdaO_poMsNjyGivfu04NhD1dwnmOnGS7FEv4MDY7eMVHDUZUa9YA.TuzF-ikBXfCgiUmoiNJ6ZZsZGQAgY2hnMMXK8CBXd1I&dib_tag=se&keywords=Diaper+Rash+Cream&qid=1741202258&sprefix=%2Caps%2C387&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1')">
+                    <img src="https://m.media-amazon.com/images/I/41snY+sZS1L._SY300_SX300_.jpg" alt="Diaper Rash Cream">
+                    <div class="product-name">Diaper Rash Cream</div>
+                    <div class="product-price">₹300</div>
+                    
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="product-card" onclick="openPopup('Baby Wipes', '₹150', 'https://m.media-amazon.com/images/I/31ZeZJxf3PL._SX300_SY300_QL70_FMwebp_.jpg', 'Soft and gentle wipes for cleaning your baby’s skin, ideal for diaper changes or quick clean-ups.', 'Ideal for parents looking for a quick and gentle way to clean their babies on the go.', 'Alcohol-free, hypoallergenic wipes that are gentle on sensitive skin while effectively cleaning.', 'https://www.amazon.in/WIN-POINT-Cleansing-Enriched-Dermatologically/dp/B0DFQ2MQ4Y/ref=sr_1_1_sspa?crid=29JUE78RGK4E&dib=eyJ2IjoiMSJ9.Gcgtdog1eWkwt0-Lq6Gt96TwWMcx4anVnxZS43WhU5452Qs5TwFjROfQY8x5cHdyZR04xY9VKMw2rNxaHIrHo16scif1LU7pbhcwCzric9rhFY2JoHRJrA7VvbPguKYlKLpbeEG3j0_OsIPhmmbVA35VSkSNWZOQFCRSIcH3xpuG0PAW4irTjkYJ2WBvUL_W3Mod3gQAPbR5nSc9jEdq5Cqe6ATMM3TqVV0qcriVQh_5-eJmsAZB8mTXPSlWIBV82HmJwcZx8Fyt8p5QHyPQLr3WyYJHC323dFhnzWEDR04.qAX-AHMVBhewbfQMdWgDyUYX-wkbQMm6mdbZ0lZS7w0&dib_tag=se&keywords=Baby%2BWipes&qid=1741202317&sprefix=baby%2Bwipes%2Caps%2C626&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1')">
+                    <img src="https://m.media-amazon.com/images/I/31ZeZJxf3PL._SX300_SY300_QL70_FMwebp_.jpg" alt="Baby Wipes">
+                    <div class="product-name">Baby Wipes</div>
+                    <div class="product-price">₹150</div>
+                    
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="product-card" onclick="openPopup('Pacifier Set', '₹100', 'https://m.media-amazon.com/images/I/61DCx1oGF3L._AC_UL480_FMwebp_QL65_.jpg', 'Set of baby pacifiers designed to soothe and calm your baby while ensuring their safety and comfort.', 'Ideal for parents looking for pacifiers that are safe and comfortable for their babies.', 'Made of high-quality, non-toxic materials, this set of pacifiers is designed to be gentle on your baby\'s delicate gums.', 'https://www.amazon.in/s?k=Pacifier+Set&crid=8J2UOHELAL6I&sprefix=%2Caps%2C529&ref=nb_sb_noss_2')">
+                    <img src="https://m.media-amazon.com/images/I/61DCx1oGF3L._AC_UL480_FMwebp_QL65_.jpg" alt="Pacifier Set">
+                    <div class="product-name">Pacifier Set</div>
+                    <div class="product-price">₹100</div>
+                    
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="product-card" onclick="openPopup('Baby Blanket', '₹500', 'https://m.media-amazon.com/images/I/81azwaU9CAL._AC_UL480_FMwebp_QL65_.jpg', 'Soft and cozy blanket designed to keep your baby warm and comfortable.', 'Ideal for parents looking for a gentle and warm blanket for their babies.', 'Made of soft, breathable material, perfect for swaddling or keeping your baby warm during sleep.', 'https://m.media-amazon.com/images/I/81azwaU9CAL._AC_UL480_FMwebp_QL65_.jpg')">
+                    <img src="https://m.media-amazon.com/images/I/81azwaU9CAL._AC_UL480_FMwebp_QL65_.jpg" alt="Baby Blanket">
+                    <div class="product-name">Baby Blanket</div>
+                    <div class="product-price">₹500</div>
+                   
+                </div>
+            </div>
+            
+              </div>
+    </div>
+
+    <center>No More Items!</center>
+
+    <nav class="bottom-nav">
+        <a href="#"><i class="fas fa-home"></i>Home</a>
+        <a href="#"><i class="fas fa-user-md"></i>Mood Board</a>
+        <a href="#"><i class="fas fa-heartbeat"></i>Period Tracker</a>
+        <a href="#" class="text-danger"><i class="fas fa-shopping-cart"></i>Pharmacy</a>
+    </nav>
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <img id="popup-img" src="" alt="">
+            <div class="product-name" id="popup-name"></div>
+            <div class="product-price" id="popup-price"></div>
+            <div class="popup-description" id="popup-desc"></div>
+            <button class="buy-btn" id="popup-buy">Buy Now</button>
+            <button class="close-btn" onclick="closePopup()">Close</button>
+        </div>
+    </div>
+    <script>
+        function openPopup(name, price, imgSrc, usage, pack, ingredients, buyLink) {
+            document.getElementById('popup-name').innerText = name;
+            document.getElementById('popup-price').innerText = price;
+            document.getElementById('popup-img').src = imgSrc;
+            document.getElementById('popup-desc').innerHTML = `<strong>Usage:</strong> ${usage}<br><strong>Contents:</strong> ${pack}<br><strong>Ingredients:</strong> ${ingredients}`;
+            document.getElementById('popup-buy').onclick = function() {
+                window.location.href = buyLink;
+            };
+            document.getElementById('popup').style.display = 'flex';
+            document.getElementById('main-content').classList.add('blur');
+        }
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('main-content').classList.remove('blur');
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

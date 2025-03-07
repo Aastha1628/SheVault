@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pregnancy Tracker</title>
+    <style>
+        /* Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600;700&display=swap');
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #f9dcdc, #fefaf5, #fdeee0, #f9dcdc);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 500px;
+            padding: 25px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .back-button {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        h1 {
+            font-weight: 700;
+            font-size: 20px;
+            margin: 0;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #DFF3F0;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        h2 {
+            font-size: 22px;
+            margin: 15px 0;
+            color: #ff7043;
+        }
+
+        p {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .input-container label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #00726C;
+        }
+
+        .input-container input,
+        .input-container select {
+            background-color: #F0F8F7;
+            color: #00726C;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 150px;
+            text-align: center;
+        }
+
+        .input-container input:hover,
+        .input-container select:hover {
+            background-color: #DAF0EF;
+        }
+
+        .or-text {
+            font-size: 14px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .activate-button {
+            background-color: #E98A77;
+            color: white;
+            font-size: 16px;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            width: 100%;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .activate-button:hover {
+            background-color: #D77464;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <button class="back-button">←</button>
+            <h1>Pregnancy Tracker</h1>
+        </header>
+        
+        <div class="image-container">
+            <img src="logoher.png" alt="Pregnancy Illustration">
+        </div>
+
+        <h2>Get Started</h2>
+        <p>Set your due date manually, or let us predict it for you. If anything changes, you can adjust it later.</p>
+        
+        <div class="input-group">
+            <div class="input-container">
+                <label for="due-date">Enter Due Date:</label>
+                <input type="date" id="due-date">
+            </div>
+            <span class="or-text">OR</span>
+            <div class="input-container">
+                <label for="pregnancy-week">Choose Pregnancy Week:</label>
+                <select id="pregnancy-week">
+                    <option value="" disabled selected>Select Week</option>
+                    <script>
+                        for (let i = 1; i <= 40; i++) {
+                            document.write(`<option value="${i}">Week ${i}</option>`);
+                        }
+                    </script>
+                </select>
+            </div>
+        </div>
+
+        <button class="activate-button" onclick="activatePregnancyMode()">Activate pregnancy mode</button>
+    </div>
+
+    <script>
+        function activatePregnancyMode() {
+            let dueDate = document.getElementById("due-date").value;
+            let week = document.getElementById("pregnancy-week").value;
+    
+            if (!dueDate && !week) {
+                alert("Please select either a due date or a pregnancy week.");
+            } else {
+                alert("Pregnancy Mode Activated!");
+                window.location.href = "weeks.html"; // Redirect to weeks.html
+            }
+        }
+    </script>
+</body>
+</html>

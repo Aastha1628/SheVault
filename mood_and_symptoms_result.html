@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pregnancy Tracker - Summary</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            margin: 0; 
+            padding: 0; 
+            background: linear-gradient(to bottom right, #f9dcdc, #fefaf5, #fdeee0, #f9dcdc);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container { 
+            width: 80%; 
+            max-width: 800px; 
+            background: white; 
+            padding: 30px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        h2 { 
+            color: #ff7043; 
+            text-align: center;
+        }
+        .data-box { 
+            background: #fff3e0; 
+            padding: 15px; 
+            border-radius: 10px; 
+            margin-bottom: 12px; 
+        }
+        .category { 
+            font-weight: bold; 
+            margin-top: 10px; 
+        }
+        p {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+        .back-btn { 
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            background: #ff7043; 
+            color: white; 
+            border: none; 
+            padding: 12px; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-size: 16px; 
+            margin: 20px auto 0; 
+            text-align: center;
+        }
+        .back-btn:hover {
+            background: #f4511e;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Tracked Data Summary</h2>
+        <div id="data-container"></div>
+        <button class="back-btn" onclick="goBack()">Go to Recommendations</button>
+    </div>
+
+    <script>
+        function displayData() {
+            let data = JSON.parse(localStorage.getItem("pregnancyData"));
+            let container = document.getElementById("data-container");
+
+            if (!data) {
+                container.innerHTML = "<p>No data saved yet!</p>";
+                return;
+            }
+
+            container.innerHTML = `
+                <div class="data-box">
+                    <div class="category">Date:</div> <p>${data.date || "No data"}</p>
+                    <div class="category">Mood:</div> <p>${data.mood?.join(", ") || "No data"}</p>
+                    <div class="category">Symptoms:</div> <p>${data.symptoms?.join(", ") || "No data"}</p>
+                    <div class="category">Sexual Activity:</div> <p>${data.sexualActivity?.join(", ") || "No data"}</p>
+                    <div class="category">Vaginal Discharge:</div> <p>${data.vaginalDischarge?.join(", ") || "No data"}</p>
+                    <div class="category">Digestion & Stool:</div> <p>${data.digestion?.join(", ") || "No data"}</p>
+                    <div class="category">Physical Activity:</div> <p>${data.physicalActivity?.join(", ") || "No data"}</p>
+                </div>
+            `;
+        }
+
+        function goBack() {
+            window.location.href = "recommendation.html";
+        }
+
+        displayData();
+    </script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Period Tracker</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      text-align: center;
+      margin: 0; 
+      padding: 0; 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      height: 120vh; 
+      background: linear-gradient(to bottom right, #f9dcdc, #fefaf5, #fdeee0, #f9dcdc); 
+    }
+    .tracker-container {
+      width: 90%; 
+      max-width: 600px; 
+      padding: 20px; 
+      background: #fff; 
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+      border-radius: 10px; 
+      text-align: center; 
+      display: flex; 
+      flex-direction: column; 
+      justify-content: center; 
+    }
+    .tracker-header { text-align: center; }
+    .period-info { /* Renamed from cycle-info */
+      font-size: 18px; 
+      font-weight: bold; 
+      color: #d77a66; 
+      margin-top: 10px; 
+    }
+
+    /* Color Explanation Section */
+    .info-section { /* Renamed from color-explanation */
+      display: flex; 
+      justify-content: space-around; 
+      margin-bottom: 20px; 
+      padding: 15px; 
+      background: #fff; 
+      border-radius: 10px; 
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); 
+    }
+    .info-card { /* Renamed from color-item */
+      text-align: center; 
+      width: 30%; 
+      padding: 10px; 
+    }
+    .icon-box img { /* Renamed from color-box */
+      width: 50px; 
+      height: 50px; 
+      border-radius: 50%; 
+      margin-bottom: 10px; 
+    }
+    .info-title { /* Renamed from color-title */
+      font-weight: bold; 
+      font-size: 14px; 
+      margin-bottom: 5px; 
+    }
+    .info-desc { /* Renamed from color-description */
+      font-size: 12px; 
+      color: #555; 
+    }
+
+    .calendar-container { width: 100%; margin: auto; }
+    .calendar-header { display: flex; justify-content: space-between; align-items: center; }
+    .days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
+    .day { padding: 10px; background: lightgray; border-radius: 5px; cursor: pointer; transition: background 0.3s ease; }
+    .day.empty { background: none; }
+    .day.period { background: #FF4B5C; color: white; font-weight: bold; }
+    .day.ovulation { background: #4C9AD4; color: white; font-weight: bold; }
+    .day.fertile { background: #6FBF8F; color: white; }
+    .day:hover { background: #ddd; }
+    .nav-bar { 
+      position: fixed; 
+      bottom: 0; 
+      width: 100%; 
+      display: flex; 
+      justify-content: space-around; 
+      padding: 10px; 
+      background: #f4f4f4; 
+    }
+    .nav-item { font-size: 14px; color: gray; }
+    .selected { color: #d77a66; font-weight: bold; }
+
+    .warning { 
+      font-size: 12px; 
+      color: #ff4b5c; 
+      margin-top: 20px; 
+      padding: 10px; 
+      background-color: #ffe0e0; 
+      border-radius: 5px; 
+    }
+    .mood-button { 
+      background-color: #d77a66; 
+      color: white; 
+      border: none; 
+      padding: 10px 15px; 
+      border-radius: 5px; 
+      cursor: pointer; 
+      font-size: 16px; 
+      margin-top: 20px; 
+    }
+    .mood-button:hover { background-color: #b35f52; }
+  </style>
+</head>
+<body>
+  <div class="tracker-container">
+    <div class="tracker-header">
+      <h2>Period Tracker</h2>
+      <p class="period-info" id="cycleInfo">Select a date to track your cycle</p>
+    </div>
+
+    <!-- Info Section with Images -->
+    <div class="info-section">
+      <div class="info-card">
+        <div class="icon-box">
+          <img src="Screenshot 2025-03-05 000601.png" alt="Period Days">
+        </div>
+        <div class="info-title">Period Days</div>
+        <p class="info-desc">These are the days when menstruation occurs. The red color signifies the bleeding period.</p>
+      </div>
+      <div class="info-card">
+        <div class="icon-box">
+          <img src="Screenshot 2025-03-05 002302.png" alt="Ovulation Days">
+        </div>
+        <div class="info-title">Ovulation Days</div>
+        <p class="info-desc">These are the days when ovulation occurs (typically around day 14 of the cycle). The blue color is calming and indicates fertility.</p>
+      </div>
+      <div class="info-card">
+        <div class="icon-box">
+          <img src="Screenshot 2025-03-05 002833.png" alt="Fertile Days">
+        </div>
+        <div class="info-title">Fertile Days</div>
+        <p class="info-desc">These are the days when the user is most fertile, typically 2 days before and after ovulation. The green color is associated with growth and fertility.</p>
+      </div>
+    </div>
+
+    <div class="calendar-container">
+      <div class="calendar-header">
+        <button aria-label="Previous Month" onclick="prevMonth()">&#9665;</button>
+        <h3 id="monthYear"></h3>
+        <button aria-label="Next Month" onclick="nextMonth()">&#9655;</button>
+      </div>
+      <div class="days" id="calendarDays"></div>
+    </div>
+
+    <!-- Mood and Symptoms Button -->
+    <button class="mood-button" onclick="location.href='moodandsymptoms.html'">Mood and Symptoms</button>
+
+    <!-- Warning Message -->
+    <div class="warning">
+      <strong>Warning:</strong> Period Tracker, ovulation, and fertility predictions may not be accurate and should not be used to prevent unwanted pregnancy.
+    </div>
+  </div>
+  
+  <script>
+    const monthYear = document.getElementById("monthYear");
+    const calendarDays = document.getElementById("calendarDays");
+    const cycleInfo = document.getElementById("cycleInfo");
+    
+    let currentDate = new Date();
+    let selectedDate = new Date(localStorage.getItem("lastPeriodDate")); // Retrieve the stored period date
+    const cycleLength = 28; // Average cycle length
+    const periodDuration = 5; // Number of days menstruation lasts
+    
+    if (selectedDate) {
+      selectedDate = new Date(selectedDate); // Ensure it's a Date object
+    }
+    
+    function renderCalendar() {
+      calendarDays.innerHTML = "";
+      let firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1).getDay();
+      let daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
+      monthYear.innerText = currentDate.toLocaleString("default", { month: "long", year: "numeric" });
+      
+      // Placeholders for days before the first day of the month
+      for (let i = 0; i < firstDay; i++) {
+        let empty = document.createElement("div");
+        empty.classList.add("day", "empty");
+        calendarDays.appendChild(empty);
+      }
+      
+      // Create day elements with event listeners
+      for (let day = 1; day <= daysInMonth; day++) {
+        let dayElement = document.createElement("div");
+        dayElement.classList.add("day");
+        dayElement.innerText = day;
+        dayElement.onclick = () => selectPeriodStart(day);
+        
+        // Highlight days based on cycle if a period start is selected
+        if (selectedDate) {
+          let cycleDay = (day - selectedDate.getDate() + cycleLength) % cycleLength;
+          if (cycleDay >= 0 && cycleDay < periodDuration) {
+            dayElement.classList.add("period"); // Period days
+          } else if (cycleDay === 14) {
+            dayElement.classList.add("ovulation"); // Ovulation day
+          } else if (cycleDay >= 12 && cycleDay <= 16) {
+            dayElement.classList.add("fertile"); // Fertile window
+          }
+        }
+        calendarDays.appendChild(dayElement);
+      }
+    }
+    
+    function selectPeriodStart(day) {
+      selectedDate.setDate(day); // Update the selected date
+      localStorage.setItem("lastPeriodDate", selectedDate); // Save the date
+      cycleInfo.innerText = `Your period starts on ${monthYear.innerText} ${day}`;
+      renderCalendar();
+    }
+    
+    function prevMonth() {
+      currentDate.setMonth(currentDate.getMonth() - 1);
+      renderCalendar();
+    }
+    
+    function nextMonth() {
+      currentDate.setMonth(currentDate.getMonth() + 1);
+      renderCalendar();
+    }
+    
+    renderCalendar();
+  </script>
+</body>
+</html>

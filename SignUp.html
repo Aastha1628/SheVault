@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #f9dcdc, #fefaf5, #fdeee0, #f9dcdc);
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .social-btns {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .social-btn img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .input-box {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .toggle-btns {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .toggle-btn {
+            padding: 8px 15px;
+            border: none;
+            cursor: pointer;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+        }
+        .toggle-btn.active {
+            background-color: #e86b5a;
+            color: white;
+        }
+        .agree-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .btn {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            color: white;
+            background-color: #e86b5a;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            background-color: #d85a4b;
+        }
+        .or-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 0;
+        }
+        .or-divider::before,
+        .or-divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #ccc;
+            margin: 0 10px;
+        }
+        .gender-container {
+            display: flex;
+            justify-content: flex-start;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+        .already-account {
+            margin-top: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sign Up</h1>
+        <p>Create an account to access all health services.</p>
+
+
+        <div class="social-btns">
+            <div id="google-btn" class="social-btn">
+                <img src="google_icon.png" alt="Google Logo">
+            </div>
+            <div id="facebook-btn" class="social-btn">
+                <img src="facebook_icon.png" alt="Facebook Logo">
+            </div>
+        </div>
+
+        <div class="or-divider">OR</div>
+
+        <input type="text" id="fullname" class="input-box" placeholder="Full Name">
+
+        <!-- Gender Selection -->
+        <div class="gender-container">
+            <label><input type="radio" name="gender" value="Female"> Female</label>
+            <label><input type="radio" name="gender" value="Male"> Male</label>
+        </div>
+
+        <!-- Date of Birth -->
+        <input type="date" id="dob" class="input-box">
+
+        <!-- Toggle between Phone and Email -->
+        <div class="toggle-btns">
+            <button class="toggle-btn active" onclick="showPhone()">By Phone</button>
+            <button class="toggle-btn" onclick="showEmail()">By Email</button>
+        </div>
+
+        <!-- Phone Number / Email (Switchable) -->
+        <div id="phone-container">
+            <input type="text" id="phone" class="input-box" placeholder="Phone Number">
+        </div>
+        <div id="email-container" style="display: none;">
+            <input type="email" id="email" class="input-box" placeholder="Email">
+        </div>
+
+        <input type="password" id="password" class="input-box" placeholder="Password">
+
+        <!-- Agree to Terms -->
+        <div class="agree-box">
+            <input type="checkbox" id="agree">
+            <label for="agree">I agree to SheVault's <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+        </div>
+
+        <button class="btn" onclick="registerUser()">Sign Up</button>
+
+        <p class="already-account">Already have an account? <a href="login.html"><b>Login</b></a></p>
+    </div>
+
+    <script>
+        function showPhone() {
+            document.getElementById("phone-container").style.display = "block";
+            document.getElementById("email-container").style.display = "none";
+            document.querySelectorAll(".toggle-btn")[0].classList.add("active");
+            document.querySelectorAll(".toggle-btn")[1].classList.remove("active");
+        }
+
+        function showEmail() {
+            document.getElementById("phone-container").style.display = "none";
+            document.getElementById("email-container").style.display = "block";
+            document.querySelectorAll(".toggle-btn")[1].classList.add("active");
+            document.querySelectorAll(".toggle-btn")[0].classList.remove("active");
+        }
+
+        function registerUser() {
+            let fullname = document.getElementById("fullname").value;
+            let dob = document.getElementById("dob").value;
+            let phone = document.getElementById("phone").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let agree = document.getElementById("agree").checked;
+
+            if (fullname === "" || dob === "" || password === "" || (!phone && !email)) {
+                alert("Please fill in all required fields.");
+            } else if (!agree) {
+                alert("You must agree to the terms before registering.");
+            } else {
+                alert("Registration Successful!");
+                window.location.href = "home.html";
+            }
+        }
+    </script>
+</body>
+</html>

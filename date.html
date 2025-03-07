@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Period Start Date</title>
+    <style>
+        /* Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600;700&display=swap');
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #f9dcdc, #fefaf5, #fdeee0, #f9dcdc);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 400px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Logo container */
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px; /* Space below the logo */
+        }
+
+        .logo-container img {
+            width: 120px; /* Adjust the width of the logo */
+            height: auto;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .back-button {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        h1 {
+            font-weight: 700;
+            font-size: 20px;
+            margin: 0;
+        }
+
+        h2 {
+            font-size: 22px;
+            margin: 15px 0;
+        }
+
+        p {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .input-container label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #00726C;
+        }
+
+        .input-container input {
+            background-color: #F0F8F7;
+            color: #00726C;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 150px;
+            text-align: center;
+        }
+
+        .input-container input:hover {
+            background-color: #DAF0EF;
+        }
+
+        .activate-button {
+            background-color: #E98A77;
+            color: white;
+            font-size: 16px;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            width: 100%;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .activate-button:hover {
+            background-color: #D77464;
+        }
+
+        .info-box {
+            background-color: #DFF3F0;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .info-box p {
+            margin: 5px 0;
+            color: #00726C;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo section -->
+        <div class="logo-container">
+            <img src="Screenshot 2025-03-04 234900.png" alt="Pregnancy Logo">
+        </div>
+
+        <header>
+            <button class="back-button">←</button>
+            <h1>Period Start Date</h1>
+        </header>
+
+        <h2>Enter Your Last Period Start Date</h2>
+        <p>We will use this date to calculate your menstrual cycle and track your ovulation and fertility days.</p>
+
+        <div class="input-container">
+            <label for="periodDate">Period Start Date:</label>
+            <input type="date" id="periodDate">
+        </div>
+
+        <button class="activate-button" onclick="saveDate()">Submit</button>
+    </div>
+    
+    <script>
+        function saveDate() {
+    const periodDate = document.getElementById("periodDate").value;
+    if (periodDate) {
+        localStorage.setItem("lastPeriodDate", periodDate); // Store the date in localStorage
+        window.location.href = "calender.html"; // Redirect to the calendar page
+    } else {
+        alert("Please enter a valid date.");
+    }
+}
+
+    </script>
+</body>
+</html>
+

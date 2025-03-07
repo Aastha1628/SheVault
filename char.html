@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer and Charity Opportunities - SheVaults</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to bottom right, #f9dcdc, #fefaf5, #fdeee0, #f9dcdc);
+            padding: 0 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 32px;
+            color: #e86b5a;
+        }
+
+        .section {
+            margin-top: 40px;
+        }
+
+        .section h2 {
+            font-size: 28px;
+            color: #117a7a;
+            margin-bottom: 15px;
+        }
+
+        .charity-list, .volunteer-opportunities, .campaigns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .charity-list div, .volunteer-opportunities div, .campaigns div {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .charity-list div h3, .volunteer-opportunities div h3, .campaigns div h3 {
+            color: #0a1551;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .charity-list div p, .volunteer-opportunities div p, .campaigns div p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            font-size: 16px;
+            color: white;
+            background-color: #e86b5a;
+            border-radius: 6px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .button:hover {
+            background-color: #d85a4b;
+        }
+
+        @media (max-width: 768px) {
+            .charity-list, .volunteer-opportunities, .campaigns {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .section h2 {
+                font-size: 24px;
+            }
+
+            .charity-list div, .volunteer-opportunities div, .campaigns div {
+                padding: 15px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Volunteer and Charity Opportunities</h1>
+
+    <!-- Charity Section -->
+    <div class="section">
+        <h2>Health-related Charities</h2>
+        <div class="charity-list">
+            <div>
+                <h3>Women's Health Foundation</h3>
+                <p>Supports women’s health initiatives globally, focusing on cancer research and preventive care.</p>
+                <a href="donate.html" class="button">Donate Now</a>
+            </div>
+            <div>
+                <h3>Breast Cancer Awareness</h3>
+                <p>A non-profit dedicated to raising awareness about breast cancer and providing resources to women.</p>
+                <a href="donate.html" class="button">Donate Now</a>
+            </div>
+            <div>
+                <h3>Planned Parenthood</h3>
+                <p>Provides reproductive health services and education for women around the world.</p>
+                <a href="donate.html" class="button">Donate Now</a>
+            </div>
+            <div>
+                <h3>Global Women's Health Initiative</h3>
+                <p>A global charity that works on improving maternal health in underserved communities.</p>
+                <a href="donate.html" class="button">Donate Now</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Volunteer Opportunities Section -->
+    <div class="section">
+        <h2>Volunteer Opportunities in Health and Wellness</h2>
+        <div class="volunteer-opportunities">
+            <div>
+                <h3>Hospital Volunteering</h3>
+                <p>Join local hospitals and clinics to assist women patients, especially in maternity and gynecology wards.</p>
+                <a href="learn-more.html" class="button">Learn More</a>
+            </div>
+            <div>
+                <h3>Women’s Health Educator</h3>
+                <p>Volunteer as an educator to provide health workshops on reproductive health in schools and communities.</p>
+                <a href="learn-more.html" class="button">Learn More</a>
+            </div>
+            <div>
+                <h3>Support Hotlines</h3>
+                <p>Provide emotional support and guidance to women going through mental health challenges or abuse.</p>
+                <a href="learn-more.html" class="button">Learn More</a>
+            </div>
+            <div>
+                <h3>Health Camps</h3>
+                <p>Volunteer at free health camps to offer basic health services like check-ups, screenings, and education to underserved women.</p>
+                <a href="learn-more.html" class="button">Learn More</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Campaigns Section -->
+    <div class="section">
+        <h2>Campaigns to Raise Awareness</h2>
+        <div class="campaigns">
+            <div>
+                <h3>Break the Silence on Menstrual Health</h3>
+                <p>A campaign to raise awareness about menstrual health issues and break the stigma surrounding periods.</p>
+                <a href="join-campaign.html" class="button">Join the Campaign</a>
+            </div>
+            <div>
+                <h3>Fight Against Breast Cancer</h3>
+                <p>A fundraising campaign to support breast cancer research and spread awareness about early detection.</p>
+                <a href="join-campaign.html" class="button">Join the Campaign</a>
+            </div>
+            <div>
+                <h3>Healthy Pregnancy for All</h3>
+                <p>A campaign that focuses on providing affordable and accessible prenatal care to women globally.</p>
+                <a href="join-campaign.html" class="button">Join the Campaign</a>
+            </div>
+            <div>
+                <h3>End Domestic Violence</h3>
+                <p>An initiative to support victims of domestic violence through education, resources, and advocacy.</p>
+                <a href="join-campaign.html" class="button">Join the Campaign</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

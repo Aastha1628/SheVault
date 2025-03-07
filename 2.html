@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Bootstrap Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+        
+        body {
+            background-color: #fefaf5;
+        }
+        
+        .header-image {
+            width: 90%;
+            height: 450px;
+            background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), 
+                        url('https://img.freepik.com/premium-photo/attractive-girl-with-makeup-showcasing-youth-skincare-concept_875825-89802.jpg') no-repeat center center/cover;
+            margin: 70px auto 20px auto;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 50px;
+            font-weight: normal;
+            text-transform: none;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            padding: 20px;
+        }
+        .header-image span {
+            font-family: 'Cookie', cursive;
+            letter-spacing: 1px;
+        }
+        .product-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px;
+            background: white;
+        }
+        .product-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .product-name {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .product-price {
+            color: #e86b5a;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Header Image -->
+    <div class="header-image"><span>Beauty begins the moment you decide to be yourself.</span></div>
+    
+    <div class="container">
+        <div class="row g-4">
+            <!-- Skincare Products -->
+            <h3>Skincare Products</h3>
+            <div class="row">
+                <div class="col-md-3"><div class="product-card"><img src="https://cdn3.foxy.in/pictures/product/image/68999/748406/beauty-of-joseon-dynasty-cream-50ml.jpeg?width=720&format=webp" alt="Hydrating Facial Mist"><div class="product-name"></div> Beauty of Joseon Dynasty Cream <div class="product-price">₹ 1200 </div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://sfycdn.speedsize.com/56385b25-4e17-4a9a-9bec-c421c18686fb/beminimalist.co/cdn/shop/files/AlphaArNew.png?crop=center&height=720&v=1721397838&width=480"><div class="product-name"></div>Minimilistic Alpha Arbutin 2% Face Serum<div class="product-price">₹599</div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://cdn3.foxy.in/pictures/product/image/54263/343758/the-face-shop-rice-ceramide-moisturizing-cream.jpg?width=720&format=webp" alt="Vitamin C Face Serum"><div class="product-name"></div>Rice & Ceramide Moisturizing Cream (50ml)<div class="product-price">₹832</div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTKJhKGxg9oQB0XZtavrSBbJ9HkotZekcWn7x1M-kT9Oyr-ywBdkeZTVvdhb2giWUogHtpC7-UxVPBY4qY4DqbFS8FvrdXLHKUei3-oYJo" alt="Moisturizing Sheet Mask"><div class="product-name"></div>Dot & Key Cica & Salicylic Anti Acne Routine<div class="product-price">₹1838</div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQkWXXyqfUwKXAFsWukSFAN3LEZo9BmamTIllvEyDoJQaUPVeZE2dYKHZLyuoPehbyIykvmYFkbu3BG48hQZE9QFCN1cfa4BC7POoy08zwoRCDpxP5WjH25SQ" alt="Moisturizing Sheet Mask"><div class="product-name"></div>Mamaearth Rice Facial Kit for Glass Skin<div class="product-price">₹346</div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTG6qNO01Htmv519vcWOx9ou-ZHdEAjqxWAMsB9Jx7xRoJ-SyEAVU0OagcZRC6IslyAFyIlbkBoz-qf4LgHLE6iB1e1l3zmOQtKO2J7Y74" alt="Moisturizing Sheet Mask"><div class="product-name"></div>Dr. Sheth's Azelaic Acid Serum <div class="product-price">₹499</div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcT-PpdaeNI2zSnZDxrzAq0Ua-jy7vJA_JgIl5h42LQdTs_eEu9pWrpx8EpkF2wAaP6cEQvkmlkNjX8tV9xoXEDvGYsQE78MzPwz2Rp1Meo5sh5ab99fop8PtA" alt="Moisturizing Sheet Mask"><div class="product-name"></div>Dot & Key Hyaluronic Face Moisturizer<div class="product-price">₹369</div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTOw9OpQIx9BaGO4gMg5lQmabQd5cvmWUF_12drHYpHeYWRnQ6Efns829i6OZDiX30ttbcKjKwVdKD_rLu3BVbHPli3fiEN8o0fNOET7a8gh9XVM2EtiMGfsQ" alt="Moisturizing Sheet Mask"><div class="product-name"></div>Neutrogena Hydro Boost Water Gel<div class="product-price">₹1012</div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRsmh5VTby-a2J_KDX174qUaL7g6kCTvao4Is2tEEI-cy_g3UNhlrpdLZoXehJrSsbVMc0KZBLve53pPm3rcVqCnH_TbLR25KbwgTetPeI-JqETx6SU11_DFw" alt="Moisturizing Sheet Mask"><div class="product-name"></div>Cetaphil Oil Skin Cleansing & Moisturizing Combo<div class="product-price">₹1299</div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcS4AyIV681l2s_004lby8B6BKem71Q-E1EKHfo-IWMjq1bRG5lLFkAbCaVoe1azDp96z3HYdAHkbXzUEP0-nwIEBunC_jSD5zAwTwzJ8mVJSA9FKiZpCFKKntE" alt="Moisturizing Sheet Mask"><div class="product-name"></div>Loreal Paris Glycolic Bright Glowing Day Cream<div class="product-price">₹415</div></div></div>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            </div>
+            
+            <!-- Body Care Products -->
+            <h3>Body Care Products</h3>
+            <div class="row">
+                <div class="col-md-3"><div class="product-card"><img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRO5OI8fgXuwrsHT86Qfice3oNskf5kRg4MPUU9Znt1hVDqeCpA0DlAwqmayzNuzAalFFU9ZrZqexUe_LYKGbYBeXoLMKeUxgLSHA1KvJtSxuHVUDl-FFU-gA" alt="Stretch Mark Prevention Cream"><div class="product-name">Chemist At Play Exfoliating Body Wash</div><div class="product-price">₹899</div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcT547eIzaXUN75HqVw8qUx9D4fWr5IbuuVdhLk6yNJihuHnMCMW6PauREl5UW6vJOYTcVtY3ZJZsSVLQiqG5vIF0dVGboOH_OcMZAwWDUufHDKxWeAwcI-z" alt="Cocoa Butter Body Lotion"><div class="product-name">Cocoa Butter Bodycare Combo</div><div class="product-price">₹699</div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSijsTEE8x3c0GRF2-HQUkPyaSbRKJtUp2ihg21Twwu-dK-9oVPd-o9uiCU5GoH88yRI-CddTvor0USKrhqBjqIYvoS4IU2OWC2DxxkKI5LN4ZK1MUF2MIrow" alt="Soothing Body Scrub"><div class="product-name">Soothing & cleansing Body Scrub</div><div class="product-price">₹499</div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcS4lTIidlTdoLG4P5uzbNPTZPIk6b4QdX1MjffufMRjhADWqqY1CZL9BgFmtJsFf50rei-yO8-9I-rQrQ22KQPZCKt6NX5IfA-jkoDPyo2_Fp3qgo-LZ0cUuA" alt="Epsom Salt Bath Soak"><div class="product-name">TNW The Natural Wash Charcoal Soap</div><div class="product-price">₹160</div></div></div>
+                <br>
+                <div class="col-md-3"><div class="product-card"><img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQsZTAx3xPB8E6pb-GIf9-qYuPRKOSmzbQyp-zdP6tBJzBHTI21EYa17GXKdjAiXlRWzEZU4VF-Z6kCkXCc_K2qjdxsCp5RCZxy9lTXQIY" alt="Moisturizing Sheet Mask"><div class="product-name"> Moisturizing Body Lotion Spray for Even-Tone</div><div class="product-price">₹199</div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcS8llNoz9gxzkeXL5gdy_vwOi2BApHU2C-4IsApiJvKSwUMlVK8LbNkxRjBY3E8_jjIg5IsLGw0S09Pg3PzRxx020aoFm2rrT2Ay_mVpG3zXYAIkuU2ouyx" alt="Moisturizing Sheet Mask"><div class="product-name">Kazarmaa Premium Bodycare Gift Set For Women</div><div class="product-price">₹1599</div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQdUwVwCJn_5dr4VOoPUXZ8SULGXLckIReqf4ZF0Z3uG2R2zQ-35aaLybzBhCgqePTU12c6xqIdgj5UnBBW03ZaBd7fM089hV9PN8baUTbQD669T2ZDENVFbec" alt="Moisturizing Sheet Mask"><div class="product-name">Kama Ayurveda Kokum Almond Moisturiser</div><div class="product-price">₹595</div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQWpVPV7E_gK4xKSmwN9zJ1RSc2JXUbOBXpF4nqjoRBhwFxG93LwMGI1aG8E37Kmo8p4dR1tSWm2MhW1WiXIJQcPGRtzP0kj1p4IF5muoo6tgWtaY8o3Nq-" alt="Moisturizing Sheet Mask"><div class="product-name">mCaffeine Detan & Hydrate Body Care Routine</div><div class="product-price">₹1147</div></div></div>
+                <br>
+                <div class="col-md-3"><div class="product-card"><img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcT8UHAiuYpCSBdg6ikqTWn_gYe9Gb8MLTsPUNY-SMZIfyLbuZ4pXLYfTTtFmFfLQNqwLH3JSEB1KddW1JrMI67YjU-W_ag8TDiMHdPYLwDb" alt="Moisturizing Sheet Mask"><div class="product-name">Body Care Routine with Ishal Naturalz</div><div class="product-price">₹890</div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSLP5Bqw84u8Pjqp7tj8qZjTp1gV9OAbJVDa-hmIDIsPoxHQMe1O3-liKQP_LLdFSt784RsQb9QqopG2hHlrOYXevtWd1EiONCjP3AsZhRnTI2doGGWhcNk" alt="Moisturizing Sheet Mask"><div class="product-name">Dot & Key Super Bright Body Lotion</div><div class="product-price">₹395</div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRffj9MBuBrb37yGduaZKdxYIbO4qLfV-3D-xMqdO2hoabWhn_sNIPfsDZG1g9CVUrq3QgCrC3hlE-bFOdl3_E0Rh4bCZ-dHdfc9MOn-xm3jjBZGCnTwNEr" alt="Moisturizing Sheet Mask"><div class="product-name">Renee Bloom Bath & Body Care Set</div><div class="product-price">₹1200</div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSG0SwEkVCzR3y4f8Cf4t1DnU0wEz1amlZyV8tgBjS_MYi3v1ZMdzDtaMB_bDPK464qa3H14-U8qQGMW6Zwsb1JAc4_5CuWdt5nc6HbuAL2y69LA8CLkGiCuA" alt="Moisturizing Sheet Mask"><div class="product-name">Be Bodywise Salicylic Acid BodyWash</div><div class="product-price">₹149</div></div></div>
+            </div>
+            
+            <!-- Hair Care Products -->
+            <h3>Hair Care Products</h3>
+            <div class="row">
+                <div class="col-md-3"><div class="product-card"><img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQbJVoW4W3nFvkQ29YBIp0XdSjDecnTrhM3HF1guVbm5Z2EwgGOID8YiozvncWUSywgbZThMJ-0qtwrjXgb9kxWiTfoMliY0bvwxX4Ry1FuL-Wku45USVmQ" alt="Sulfate-Free Shampoo"><div class="product-name">Minimalist Hair Growth Actives Hair</div><div class="product-price">₹799</div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQcXGxYafSpjkiGiFvuCaZg9znrnqRWjzOOibfoovO6V3JRDMtiEjdJ_d7crq1Lv34WDndqbM79Havzaq3CXcCjnXxrLO-KsCCpFjBpkVDIIUVLJSS9XL06" alt="Conditioning Hair Mask"><div class="product-name">Mamaearth Rosemary Anti-Hair Fall Combo</div><div class="product-price">₹510</div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcS3i5zq6Zdq8g-Ei0ktXZj_ini_y2h_ziL6ida_XD0fPsm92sp--FljBK1iZ9gY-5dKHKyxbOEx4vhtzloATf2FKHIawAHdw7VYKI0HWoGGzJJpJwksbResNA" alt="Dry Shampoo"><div class="product-name">Re'equil Anti-FrizzHair Conditioner</div><div class="product-price">₹499</div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSkSshXOQ1YLJVv9bcaZcDaaafs2Gb8DySw3xJfY57IyPe7Bdql-SNTxdMNFUsnEcLZWs_Y5YVtR9EPewQSJl9B3-9jJjn8Co42rKGKTNXwVlbadCd9N2xYhNU" alt="Moisturizing Sheet Mask"><div class="product-name">Alps Goodness Frizz-Control Hair Mask </div><div class="product-price">₹228</div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQQuthHV27VeiGq7dKPIKdPuUxpVa4uf-LRQpWtmDZ_X81bVcQaGzGj1O1VcRcQ0hrOrDQ-TKBaXZ4ap_ZM3QMlca1_n0NmRdfveCHcsw8vgZBk_HecUU57&usqp=CAc" alt="Moisturizing Sheet Mask"><div class="product-name">Plant Protein Hair Conditioner</div><div class="product-price">₹795</div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTV6qeNXuCxZjg67i4JJw_0lIOvKDYcIiPQWPE6YYr_Fy1lkY6haEExN4dbzRvb2JBmCUbs6qIL7QjMM5sCdQV2PmoNopd6BPqCiFiANAeeyunHwPQ8pkFKCJw" alt="Moisturizing Sheet Mask"><div class="product-name">Bare Anatomy Anti-Hair Fall Mask</div><div class="product-price">₹475</div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSTXxrlAIKJl8Cu6Yf5QAKT06wVvuaDFCukFpC-QHwHucM0zwOYPvJh7fU_BuayIfAbnVe5GNzGGoASmpm7HY5__v5o-roZs_qmKmH8yiRCOyqpVUO7yOqXkA" alt="Moisturizing Sheet Mask"><div class="product-name">L'Oreal Paris extravagent Dry Shampoo</div><div class="product-price">₹199</div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQndijfot87zktMjl9aZZdZvkbBpQ6j9ughzl5nQonfs5l-AoOLujkmLYqZTW2uNmXNaHWhBVV576Cb7e-SDKexWr-TV9EGU37YSEBu_pa__EwVEESjNsFKew" alt="Moisturizing Sheet Mask"><div class="product-name">BBLUNT Moisture Combo</div><div class="product-price">₹843</div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTaxbqrJOG9r38BQtEvnZ0r4ELhKTsNDS3mNE_udbB3wgjUZYq8tGBnr2nEXk0DOUbpbrLiEAXRdAfLoT_xoszjV9n1VJakCmW1tFGI0J-0Qp5znHUXd5ArEw" alt="Moisturizing Sheet Mask"><div class="product-name">SESA Rephase 2 Step Hair Growth Kit</div><div class="product-price">₹465</div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcREYaVNmcMRAePbXCc6BVWHCHF6ttkqtM7lmjblPH8lpXZIH9brVue5Wz-XMTmU76bnMPNRGiKskLTnNSR34DzTq2s87nqiqHKCPKIg9cHiJTDie0ZS0l2N9Q&usqp=CAc" alt="Moisturizing Sheet Mask"><div class="product-name">Argan Grapeseed  Hair Balm</div><div class="product-price">₹309</div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRdSWmUMPYVhqeKKq1a2PLdT5EPV9MotVlSpgFqMF9341wSKMAPE3j3Ljt2FuY-oEgQEcf8HpnIX8hQqPZJKTVSMU8cg1mvlC22CW-g5b7C0xtkL7LUBPNwnA" alt="Moisturizing Sheet Mask"><div class="product-name">Moroccanoil Hydrating Shampoo</div><div class="product-price">₹399</div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTgABYOa9a2mu62km0KcTt43yapRZy-y1h3yYPHwQPW0OyMZolBb5ZE-KsUjqXOh3eYVhnbZR3VhgbMzSEoYLi9AaisCKRwbqqlaZ2PZNBufGaYAZyQS18P" alt="Nourishing Argan Oil"><div class="product-name">Brillare Nourishing Argan Oil</div><div class="product-price">₹220</div></div></div>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <center>No More Items!</center>
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #f9dcdc, #fefaf5, #fdeee0, #f9dcdc);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background: white;
+            min-height: 100vh;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .header span {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+        .profile-box {
+            background: #4aaca8;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            border-radius: 10px;
+            margin: 15px;
+            color: white;
+        }
+        .profile-box img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .menu {
+            background: white;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            cursor: pointer;
+        }
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        .menu-item:hover {
+            background: #f1f1f1;
+        }
+        .menu-icon {
+            width: 30px;
+            height: 30px;
+            margin-right: 15px;
+        }
+        .menu-text {
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header" onclick="goHome()">
+            <span>&#8592;</span> Profile
+        </div>
+        <div class="profile-box">
+            <img src="profile_logo.png" alt="Profile Picture">
+            <div>
+                <b>Your Name</b>
+                <p style="margin: 0; font-size: 14px;">yourname@example.com</p>
+            </div>
+        </div>
+        <div class="menu">
+            <div class="menu-item" onclick="navigate('account.html')">
+                <img src="profile_logo.png" class="menu-icon" alt="icon">
+                <div class="menu-text">Account Information</div>
+            </div>
+            <div class="menu-item" onclick="navigate('medical_records.html')">
+                <img src="icon2.png" class="menu-icon" alt="icon">
+                <div class="menu-text">My Medical Records</div>
+            </div>
+            <div class="menu-item" onclick="navigate('bookmarks.html')">
+                <img src="icon3.png" class="menu-icon" alt="icon">
+                <div class="menu-text">Bookmarks</div>
+            </div>
+            <div class="menu-item" onclick="navigate('orders.html')">
+                <img src="icon4.png" class="menu-icon" alt="icon">
+                <div class="menu-text">Order & Payment History</div>
+            </div>
+            <div class="menu-item" onclick="navigate('settings.html')">
+                <img src="icon5.png" class="menu-icon" alt="icon">
+                <div class="menu-text">Settings</div>
+            </div>
+            <div class="menu-item" onclick="navigate('help.html')">
+                <img src="icon6.png" class="menu-icon" alt="icon">
+                <div class="menu-text">Help Center</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function navigate(url) {
+            alert("Navigating to " + url);
+            // window.location.href = url; // Uncomment this for real navigation
+        }
+        function goHome() {
+            window.location.href = "home.html"; // Home page ka link replace kar lena
+        }
+    </script>
+</body>
+</html>

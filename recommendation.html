@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pregnancy Tracker - Summary</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            margin: 0; 
+            padding: 0; 
+            background: linear-gradient(to bottom right, #f9dcdc, #fefaf5, #fdeee0, #f9dcdc);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container { 
+            max-width: 600px; 
+            background: white; 
+            padding: 20px; 
+            border-radius: 10px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px; /* Added top margin */
+        }
+        h2 { color: #ff7043; }
+        .data-box { 
+            background: #fff3e0; 
+            padding: 10px; 
+            border-radius: 8px; 
+            margin-bottom: 10px; 
+            text-align: left; 
+        }
+        .category { 
+            font-weight: bold; 
+            margin-top: 10px; 
+        }
+        .back-btn { 
+            background: #ff7043; 
+            color: white; 
+            border: none; 
+            padding: 10px; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            font-size: 16px; 
+            margin-top: 20px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Personalized Recommendations</h2>
+        <div id="data-container"></div>
+        <button class="back-btn" onclick="goBack()">Back to tracker</button>
+    </div>
+
+    <script>
+        const recommendations = {
+            mood: {
+                "Calm": "Keep up the positive mindset! Practice mindfulness to stay centered.",
+                "Happy": "Enjoy the good vibes! A light walk can boost your well-being.",
+                "Energetic": "Channel your energy into activities like yoga or swimming.",
+                "Mood Swings": "Stay hydrated and eat balanced meals to stabilize mood.",
+                "Irritated": "Take deep breaths and try aromatherapy to relax.",
+                "Sad": "Listen to soothing music and talk to a loved one for support.",
+                "Anxious": "Try meditation and deep breathing to ease anxiety.",
+                "Depressed": "Seek emotional support and engage in activities that bring joy.",
+                "Low Energy": "Rest well and include iron-rich foods in your diet.",
+                "Confused": "Keep a journal to organize thoughts and reduce stress."
+            },
+            symptoms: {
+                "Cramps": "Apply a warm compress and try light stretching exercises.",
+                "Acne": "Stay hydrated and use gentle skincare products.",
+                "Tender Breasts": "Wear a comfortable bra and try warm/cold compresses.",
+                "Fatigue": "Prioritize sleep and eat small, frequent meals.",
+                "Backache": "Maintain good posture and try prenatal yoga.",
+                "Headache": "Stay hydrated and avoid screen exposure before bed.",
+                "Insomnia": "Establish a bedtime routine with relaxation techniques.",
+                "Leg Cramps": "Stretch your legs before bed and stay hydrated.",
+                "Frequent Urination": "Reduce fluid intake before bed but stay hydrated throughout the day.",
+                "Sleepiness": "Take short naps and maintain a consistent sleep schedule."
+            },
+            sexualActivity: {
+                "Didn't Have Sex": "Ensure comfort and emotional well-being.",
+                "Protected Sex": "Maintain safe practices and hygiene.",
+                "Unprotected Sex": "Monitor for any symptoms and consult a doctor if needed."
+            },
+            vaginalDischarge: {
+                "No Fluid": "Stay hydrated to maintain natural moisture levels.",
+                "Creamy": "This is normal; maintain hygiene.",
+                "Watery": "Could indicate ovulation; track your cycle.",
+                "Sticky": "Common before ovulation; observe changes.",
+                "Watery White": "Normal discharge, but monitor for any odor.",
+                "Bloody": "Consult a doctor if unexpected.",
+                "Thick White": "Might indicate infection; seek medical advice.",
+                "Dark": "If unusual, seek professional consultation."
+            },
+            digestion: {
+                "Nausea": "Eat small, frequent meals and stay hydrated.",
+                "Bloating": "Reduce gas-inducing foods and drink warm water.",
+                "Constipation": "Increase fiber intake and exercise moderately.",
+                "Diarrhea": "Stay hydrated and avoid spicy foods."
+            },
+            physicalActivity: {
+                "No Exercise": "Gentle stretching can still help you stay active.",
+                "Yoga": "Great for flexibility and mental well-being.",
+                "Gym": "Ensure proper warm-ups and avoid heavy lifting.",
+                "Swimming": "Low-impact and great for pregnancy support.",
+                "Walking": "Helps circulation and overall fitness."
+            }
+        };
+
+        function displayData() {
+            let data = JSON.parse(localStorage.getItem("pregnancyData"));
+            let container = document.getElementById("data-container");
+
+            if (!data) {
+                container.innerHTML = "<p>No data saved yet!</p>";
+                return;
+            }
+
+            let resultHTML = `<div class='data-box'>
+                <div class='category'>Date:</div> <p>${data.date || "No data"}</p>
+                <div class='category'>Recommendations:</div> <ul>`;
+
+            Object.keys(recommendations).forEach(category => {
+                if (data[category]) {
+                    data[category].forEach(item => {
+                        if (recommendations[category][item]) {
+                            resultHTML += `<li>${recommendations[category][item]}</li>`;
+                        }
+                    });
+                }
+            });
+
+            resultHTML += "</ul></div>";
+            container.innerHTML = resultHTML;
+        }
+
+        function goBack() {
+            window.location.href = "home.html";
+        }
+
+        displayData();
+    </script>
+</body>
+</html>

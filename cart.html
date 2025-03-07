@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Pharmacy</title>
+ 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+
+       <style>
+        body { background-color: #fefaf5; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        .cart-container { max-width: 800px; margin: auto; padding: 20px; margin-top: 80px; }
+        h1 { text-align: center; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #117a7a; color: #117a7a ;padding: 10px; text-align: left; }
+        
+        th { background-color: #f4f4f4; }
+        img { width: 50px; height: 50px; object-fit: cover; }
+        .remove-btn, .checkout-btn { background: #e86b5a; color: white; border: none; padding: 10px; cursor: pointer; }
+        .cart-actions { display: flex; justify-content: space-between; margin-top: 20px; }
+        .price { color: #117a7a; font-weight: bold; }
+        
+        body { 
+    font-family: Arial, sans-serif; 
+    text-align: center; 
+    background: linear-gradient(135deg, #fceae8, #fff7f3, #fdeee0); 
+    background-attachment: fixed; 
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+
+        /* Footer Styling */
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: white;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            bottom: 50px;
+            width: 100%;
+        }
+        
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+        }
+        .bottom-nav a {
+            flex: 1;
+            text-align: center;
+            text-decoration: none;
+            color: black;
+            font-size: 14px;
+        }
+        
+        .custom-navbar {
+    background-color: #fff; /* Light background */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    
+    height: 60px; /* Adjust height */
+    padding: 5px 0;
+    display: flex;
+    align-items: center;
+}
+.custom-navbar .navbar-brand {
+    font-family: 'Cookie', cursive;
+    font-size: 50px;
+    font-weight: bold;
+    color: #e86b5a; /* Apply the color to the text */
+}       
+        
+        .bottom-nav a i { display: block; font-size: 20px; }
+    </style>
+</head>
+<body>
+    <nav class="navbar custom-navbar">
+        <div class="container">
+            <a class="navbar-brand">Pharmacy</a>
+        </div>
+    </nav>
+    
+    
+    <div class="cart-container">
+        <h1>Your Shopping Cart</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items"></tbody>
+        </table>
+        <p>Total: ₹<span id="cart-total">0.00</span></p>
+        <div class="cart-actions">
+            <button onclick="clearCart()" class="remove-btn">Clear Cart</button>
+            
+            <button onclick="window.location.href='payment.html'" class="checkout-btn">Proceed to Checkout</button>
+        </div>
+    </div>
+    
+    
+    
+    <nav class="bottom-nav">
+        <a href="#"><i class="fas fa-home"></i>Home</a>
+        <a href="#"><i class="fas fa-user-md"></i>Mood Board</a>
+        <a href="#"><i class="fas fa-heartbeat"></i>Period Tracker</a>
+        <a href="#" class="text-danger"><i class="fas fa-shopping-cart"></i>Pharmacy</a>
+    </nav>
+    
+    <script>
+        function loadCart() {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            let cartItems = document.getElementById("cart-items");
+            let cartTotal = document.getElementById("cart-total");
+            cartItems.innerHTML = "";
+            let total = 0;
+            
+            cart.forEach((item, index) => {
+                let row = document.createElement("tr");
+                row.innerHTML = `
+                    <td><img src="${item.image}" alt="${item.name}"></td>
+                    <td>${item.name}</td>
+                    <td>₹${item.price}</td>
+                    <td>1</td>
+                    <td><button class="remove-btn" onclick="removeFromCart(${index})">Remove</button></td>
+                `;
+                cartItems.appendChild(row);
+                total += parseFloat(item.price);
+            });
+            
+            cartTotal.textContent = total.toFixed(2);
+        }
+        
+        function clearCart() {
+            localStorage.removeItem("cart");
+            loadCart();
+        }
+        
+        function removeFromCart(index) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cart.splice(index, 1);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            loadCart();
+        }
+        
+        window.onload = loadCart;
+    </script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #fefaf5;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .social-btns {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #eee;
+            cursor: pointer;
+            font-size: 24px;
+        }
+        .google { color: #DB4437; }
+        .facebook { color: #3b5998; }
+        .apple { color: #000; }
+
+        .input-box {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .toggle-btns {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .toggle-btn {
+            padding: 8px 15px;
+            border: none;
+            cursor: pointer;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+        }
+        .toggle-btn.active {
+            background-color: #e86b5a;
+            color: white;
+        }
+        .agree-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .btn {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            color: white;
+            background-color: #e86b5a;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            background-color: #d85a4b;
+        }
+        .or-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 0;
+        }
+        .or-divider::before,
+        .or-divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #ccc;
+            margin: 0 10px;
+        }
+        .gender-container {
+            display: flex;
+            justify-content: flex-start;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+        .already-account {
+            margin-top: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sign Up</h1>
+        <p>Create an account to access all health services.</p>
+
+        <!-- Social Login Icons -->
+        <div class="social-btns">
+            <div id="google-btn" class="social-btn google"></div>
+            <div id="facebook-btn" class="social-btn facebook"></div>
+        </div>
+
+        <div class="or-divider">OR</div>
+
+        <form id="signup-form" action="home.html" method="POST">
+            <input type="text" id="fullname" class="input-box" placeholder="Full Name" autocomplete="name" required>
+
+            <!-- Gender Selection -->
+            <div class="gender-container">
+                <label><input type="radio" name="gender" value="Female"> Female</label>
+                <label><input type="radio" name="gender" value="Male"> Male</label>
+            </div>
+
+            <!-- Date of Birth -->
+            <input type="date" id="dob" class="input-box" autocomplete="bday" required>
+
+            <!-- Toggle between Phone and Email -->
+            <div class="toggle-btns">
+                <button type="button" class="toggle-btn active" onclick="showPhone()">By Phone</button>
+                <button type="button" class="toggle-btn" onclick="showEmail()">By Email</button>
+            </div>
+
+            <!-- Phone Number / Email (Switchable) -->
+            <div id="phone-container">
+                <input type="tel" id="phone" class="input-box" placeholder="Phone Number" autocomplete="tel">
+            </div>
+            <div id="email-container" style="display: none;">
+                <input type="email" id="email" class="input-box" placeholder="Email" autocomplete="email">
+            </div>
+
+            <input type="password" id="password" class="input-box" placeholder="Password" autocomplete="new-password" required>
+
+            <!-- Agree to Terms -->
+            <div class="agree-box">
+                <input type="checkbox" id="agree" required>
+                <label for="agree">I agree to SheVault's <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+            </div>
+
+            <button type="submit" class="btn">Register</button>
+        </form>
+
+        <p class="already-account">Already have an account? <a href="login.html"><b>Login</b></a></p>
+    </div>
+
+    <script>
+        function showPhone() {
+            document.getElementById("phone-container").style.display = "block";
+            document.getElementById("email-container").style.display = "none";
+            document.querySelectorAll(".toggle-btn")[0].classList.add("active");
+            document.querySelectorAll(".toggle-btn")[1].classList.remove("active");
+        }
+
+        function showEmail() {
+            document.getElementById("phone-container").style.display = "none";
+            document.getElementById("email-container").style.display = "block";
+            document.querySelectorAll(".toggle-btn")[1].classList.add("active");
+            document.querySelectorAll(".toggle-btn")[0].classList.remove("active");
+        }
+    </script>
+</body>
+</html>

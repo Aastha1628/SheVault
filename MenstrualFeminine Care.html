@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Bootstrap Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+ <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+        
+        body {
+            background: linear-gradient(to bottom right, #f9dcdc, #fefaf5, #fdeee0, #f9dcdc);
+            transition: filter 0.3s ease;
+        }
+        
+        .blur {
+            filter: blur(5px);
+        }
+        
+        .header-image {
+            width: 90%;
+            height: 450px;
+            background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2)), 
+                        url('https://wallpapers.com/images/hd/aesthetic-collage-desktop-hirntlnreaephl4r.jpg') no-repeat center center/cover;
+            margin: 70px auto 20px auto;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 50px;
+            font-weight: normal;
+            text-transform: none;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            padding: 20px;
+        }
+        .header-image span {
+            font-family: 'Cookie', cursive;
+            letter-spacing: 1px;
+        }
+        .product-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+        }
+        .product-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .product-name {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .product-price {
+            color: #e86b5a;
+            font-size: 18px;
+        }
+        
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .popup-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 400px;
+        }
+        .popup img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .popup-description {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+        .buy-btn {
+            background: #e86b5a;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .close-btn {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        
+    
+        .custom-navbar {
+    background-color: #fff; /* Light background */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    
+    height: 60px; /* Adjust height */
+    padding: 5px 0;
+    display: flex;
+    align-items: center;
+}
+.custom-navbar .navbar-brand {
+    font-family: 'Cookie', cursive;
+    font-size: 50px;
+    font-weight: bold;
+    color: #e86b5a; /* Apply the color to the text */
+}
+
+
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background: white;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    bottom: 50px;
+    width: 100%;
+}
+
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: white;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+
+.bottom-nav a {
+    flex: 1;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+}
+
+.bottom-nav a i {
+    display: block;
+    font-size: 20px;
+}
+
+.text-danger {
+    color: red;
+}
+.bottom-nav a.active {
+    background-color: #f0f0f0;
+    color: #117a7a;
+}
+
+
+    </style>
+
+<!-- Jotform bot library -->
+<script src="https://cdn.jotfor.ms/s/umd/latest/for-embedded-agent.js"></script>
+
+</head>
+<body>
+
+    <!-- Jotform bot initialization -->
+<script>
+    window.addEventListener("DOMContentLoaded", function() {
+        window.AgentInitializer.init({
+            rootId: "JotformAgent-019567739bdd7a048af8e9b6c89ee6e09dd0",
+            formID: "019567739bdd7a048af8e9b6c89ee6e09dd0",
+            queryParams: ["skipWelcome=1", "maximizable=1"],
+            domain: "https:\/\/www.jotform.com",
+            isInitialOpen: false,
+            isDraggable: false,
+            background: "linear-gradient(180deg, #C8CEED 0%, #C8CEED 100%)",
+            buttonBackgroundColor: "#0a1551",
+            buttonIconColor: "#fff",
+            variant: false,
+            customizations: {
+                greeting: "Yes",
+                greetingMessage: "Hi! How can I assist you?",
+                pulse: "Yes",
+                position: "right"
+            }
+        });
+    });
+</script>
+
+    <nav class="navbar custom-navbar">
+        <div class="container">
+            <a class="navbar-brand">Pharmacy</a>
+        </div>
+    </nav>
+    <div class="header-image"><span>A Woman who embraces her FEMININITY <BR> is woman who knows her POWER.</span></div>
+    <br><br>
+    <div class="container">
+        <h3>Period Medicines</h3>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="product-card" onclick="openPopup('Pain Relief Tablets', '₹250', 'https://m.media-amazon.com/images/I/61FGoJ+V8vL._AC_UL480_FMwebp_QL65_.jpg', 'A medication designed to provide relief from various types of pain, including headaches and muscle pain.', 'For those experiencing pain relief needs, especially mild to moderate pain.', 'Formulated with active ingredients that target pain and reduce discomfort.', 'https://www.amazon.in/Ortho-Power-Tablet-Pack-units/dp/B0DXQCF1SN/ref=sxin_15_pa_sp_search_thematic_sspa?content-id=amzn1.sym.70fd741c-68a9-470a-9805-115e3115104d%3Aamzn1.sym.70fd741c-68a9-470a-9805-115e3115104d&crid=20C88B5DETWIZ&cv_ct_cx=pain%2Brelief%2Btablets&keywords=pain%2Brelief%2Btablets&pd_rd_i=B0DXQCF1SN&pd_rd_r=232db41e-5f0e-4916-bae1-c6f2afd5e344&pd_rd_w=eaBEI&pd_rd_wg=aoVrx&pf_rd_p=70fd741c-68a9-470a-9805-115e3115104d&pf_rd_r=GX6M9R393BRSXES008TJ&qid=1741199893&s=hpc&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sprefix=pain%2Brelif%2Btablet%2Chpc%2C568&sr=1-1-66673dcf-083f-43ba-b782-d4a436cc5cfb-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9zZWFyY2hfdGhlbWF0aWM&th=1')">
+                    <img src="https://m.media-amazon.com/images/I/61FGoJ+V8vL._AC_UL480_FMwebp_QL65_.jpg" alt="Pain Relief Tablets">
+                    <div class="product-name">Pain Relief Tablets</div>
+                    <div class="product-price">₹250</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="product-card" onclick="openPopup('Menstrual Cramp Relief Patch', '₹399', 'https://m.media-amazon.com/images/I/515IKq4Km5L._AC_UL480_FMwebp_QL65_.jpg', 'A patch designed to alleviate menstrual cramps by providing soothing heat or medication directly to the area.', 'Best for individuals experiencing menstrual cramps or related discomfort.', 'Provides targeted relief with heat therapy or active pain-relieving ingredients.', 'https://www.amazon.in/Sirona-Feminine-Pain-Relief-Patches/dp/B076DXYPKW/ref=sr_1_11?crid=1MXMCYTT5E5KL&dib=eyJ2IjoiMSJ9.BhqUgdp4zjzpsDyOpl7WlYBMRJ0T9rQDeH8du1ABlKRZ26xv3Oh2JEc0kAdZAQgkvypMwHm2SKo5mM2pi0trxOg4jjxn9B5tli5XsUxtkd_bNyWRxmMb-uCuI9FsIqyWM3Fi6yMR_N927OKzIynknLrnmP_MJVuAaLjUPpzXtV5jI9ve-jb8Y4P3L25XAqET847L-UCtK8LxpPElUi22M1v2iEoML8tgv3_GrWyMMNfXVuRCDL1kuBvB6jNFrvZHQFPpuAttSCVyWx2e4-B50AfLGlMa7Z9jJ6mvf1qEK_TsdQrdnU7J3e8wnv0ob7yXYdNe57dUVRd1iKZT1iMA8571hhbSTHXGLkeBBH1km1I.wgMvqWQks_7ZpaUotLS4-7-4WfPNA79bWeDkCT9Jd-Q&dib_tag=se&keywords=menstrual+cramp+relief+patch&qid=1741199947&s=hpc&sprefix=%2Chpc%2C616&sr=1-11')">
+                    <img src="https://m.media-amazon.com/images/I/515IKq4Km5L._AC_UL480_FMwebp_QL65_.jpg" alt="Menstrual Cramp Relief Patch">
+                    <div class="product-name">Menstrual Cramp Relief Patch</div>
+                    <div class="product-price">₹399</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="product-card" onclick="openPopup('Herbal Tea for Period Comfort', '₹180', 'https://m.media-amazon.com/images/I/61j7ft0bs+L._AC_UL480_FMwebp_QL65_.jpg', 'An herbal tea blend designed to relieve menstrual discomfort and improve period comfort.', 'Perfect for those seeking a natural solution to menstrual discomfort.', 'Contains calming herbs like chamomile and ginger to soothe discomfort during periods.', 'https://www.amazon.in/Organic-India-Tulsi-Honey-Chamomile/dp/B00H4SKY7A/ref=sr_1_2_sspa?crid=2KW5PAP8AL9WZ&dib=eyJ2IjoiMSJ9.E0IRUuzsHX0pijHlIyAZCHAPa7FWfPytH9gOjhQd5VvGhuKtv0x-bWLQw6SZslDNM1YUdXSn5s3NKEiA1_WFtcTVpLTuvQKfIEklbJgejL9pn9Uf4EmUfn9t7QSQ5A5k3CdSJk4hOh2o8Ra8W0ZyhWMMel_2b7WT27i4mBhlGyvalFJWy3q3ASeHrmogoqNSRofWV12J-zUmpg4MGRJkLOxGP669vCcE3Z-AJ6gxc78L-gjvsWTPEnD0W6xGS7V8hxkC7CDcixoprHmA3XlmrhJ2NvofIgcTLcfEtmk4Oa8.pj0tuVtRsBC3g3C9c5gyYhSSw-0zgKp-fYrClY--2lE&dib_tag=se&keywords=herbal+tea+for+period+comfort&qid=1741199778&s=hpc&sprefix=%2Chpc%2C846&sr=1-2-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1')">
+                    <img src="https://m.media-amazon.com/images/I/61j7ft0bs+L._AC_UL480_FMwebp_QL65_.jpg" alt="Herbal Tea for Period Comfort">
+                    <div class="product-name">Herbal Tea for Period Comfort</div>
+                    <div class="product-price">₹180</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="product-card" onclick="openPopup('Heat Pad for Pain Relief', '₹249', 'https://m.media-amazon.com/images/I/61l4SDwMw1L._SX300_SY300_QL70_FMwebp_.jpg', 'A heat pad that provides soothing relief for pain, including muscle pain, menstrual cramps, and more.', 'Ideal for anyone seeking a convenient heat therapy option for various pains.', 'Features adjustable heat settings for personalized relief.', 'https://www.amazon.in/Olives-Electric-Heating-Charging-Multicolor/dp/B07SR7GTR4/ref=sr_1_11?crid=3BGLCR35KYHH8&dib=eyJ2IjoiMSJ9.aahrUOzvenjrRkizgMyytBpgQdALSBYVgz4wB-ypaQQsk-Pn17Izhr-Wp9aWypzCYpWGr1YjWjl9z8SMtReEXIEHumFENAKpMTzaPZ5CDKKNOSH-8yadAoPY3Shr4WENk2O86wQZU5o9onb4wxYvHj_rCBd6FkrJkBBGQTp9y_2K4yhYiltlgz6BxlVfcLW12PlVex3A3UFEIYjDQ4vgM3zKGtcLJqgj3NE31KBRRKP-A97Nj9gXLuzbz0WLKfVrWSIXiOjuNBbKiRwg2wmIZK9iF8ap5GAAgknvoJzUlHZ6xGxjMkOUWS5AdbyN8tU8VwV6yBevlupWQuI2cpO7kbzZiSJr4s1D5ntvtYubw4Y.z8_42-dNkDEJgwV4p0K2nr4XxczSG68Mey5I6f-VdjY&dib_tag=se&keywords=Heat%2BPad%2Bfor%2BPain%2BRelief&qid=1741200062&s=hpc&sprefix=heat%2Bpad%2Bfor%2Bpain%2Brelief%2Chpc%2C507&sr=1-11&th=1')">
+                    <img src="https://m.media-amazon.com/images/I/61l4SDwMw1L._SX300_SY300_QL70_FMwebp_.jpg" alt="Heat Pad for Pain Relief">
+                    <div class="product-name">Heat Pad for Pain Relief</div>
+                    <div class="product-price">₹249</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="product-card" onclick="openPopup('Organic Cotton Pads', '₹220', 'https://m.media-amazon.com/images/I/71hk4Al1gpL._AC_UL480_FMwebp_QL65_.jpg', 'Cotton pads made from organic materials, providing a natural and comfortable option for menstrual hygiene.', 'Best for individuals seeking a gentle, eco-friendly alternative for feminine hygiene.', 'Made from 100% organic cotton, free from synthetic chemicals and dyes.', 'https://www.amazon.in/Plush-Cotton-Ultra-Thin-Heavy-Liners/dp/B07WGJYWW1/ref=sr_1_4?crid=F1SW5TF3JMAY&dib=eyJ2IjoiMSJ9.WggAHGzBK6mUjtZ_tlAwGFbPhqtlFNrhr3IltqeU1Kd_lwkmpOEK3nuap_vawtr_XbuZp6iCNO6KhB5tew3UAVLxleGRB_qAIOTD8Z17yZld2sLgaZG3j0UVMr1FgZpqt0-PGScsyBxGDw4l64OslWi0fZc17TEg2x2i3xybhGBAd6ay51c4mmwEc1XhLPFl7ocCo4kYCkerBQeC_DkQnlF_NXb6Y7hqWdvFyCD8HjgzS8oZL9Vq7cBSaK_49JzKg4aXBvYR1xgACDibL5x7TBzcFieW8K-omdacQPuWxDD1jOsYyYIEAQfjUFJA_8rM_FBZjmk_FW389lZEm7pjRP16W9_Rk_9yZ4NRxaEf3dA.VcJZ9-KHQJopKqAzsDkSFtq3X578Bnq8wbZWAT_i9jA&dib_tag=se&keywords=Organic+Cotton+Pads&qid=1741200170&s=hpc&sprefix=organic+cotton+pads%2Chpc%2C538&sr=1-4')">
+                    <img src="https://m.media-amazon.com/images/I/71hk4Al1gpL._AC_UL480_FMwebp_QL65_.jpg" alt="Organic Cotton Pads">
+                    <div class="product-name">Organic Cotton Pads</div>
+                    <div class="product-price">₹220</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="product-card" onclick="openPopup('Hormonal Balance Supplement', '₹680', 'https://m.media-amazon.com/images/I/41Xffs3pffL._SX300_SY300_QL70_FMwebp_.jpg', 'A supplement designed to support hormonal balance, especially during the menstrual cycle or menopause.', 'Ideal for those seeking to regulate hormones naturally and improve overall well-being.', 'Formulated with natural herbs and nutrients to support hormonal health.', 'https://www.amazon.in/Capsules-Hormonal-Imbalance-Irregular-Certified/dp/B0DHGC4RZB/ref=sr_1_1_sspa?crid=A7HPVIWCFI69&dib=eyJ2IjoiMSJ9.1M5BZsItAHghvP9sLkAZ6_GRfBIvjGBGDgWjTcdSq74uSeeei3OfwsRsk6vorX-ZcWTXzo4Hgf4OOx1ASmULzTgqkGw8lLLavsNfa-DAj6cBsX2MC8x03xD2HTi5-yXj_l4l4qPc1XsEneqxw7kpmkfbiOC9dClH_la-v1v7Djuuo-gO2HjZRZxA1d2mUuqvdMEgn0OXLiBsSPPsS1GvchCHWKDSkktA4VvZQgtVKiruFRblY8eEBWKIPOsuo14yW6H6nKR5umsxR7n6n7wcmxYlGGuYWe5k8V8eBaCbYl0.hCKsQObQfL0rsP7bIBwB9w6UPX2pc8oGp2CsqA7zICk&dib_tag=se&keywords=Hormonal%2BBalance%2BSupplement&qid=1741200301&s=hpc&sprefix=hormonal%2Bbalance%2Bsupplement%2Chpc%2C824&sr=1-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1')">
+                    <img src="https://m.media-amazon.com/images/I/41Xffs3pffL._SX300_SY300_QL70_FMwebp_.jpg" alt="Hormonal Balance Supplement">
+                    <div class="product-name">Hormonal Balance Supplement</div>
+                    <div class="product-price">₹680</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="product-card" onclick="openPopup('Essential Oils for Cramps', '₹350', 'https://m.media-amazon.com/images/I/41scxERfWEL._SX300_SY300_QL70_FMwebp_.jpg', 'A blend of essential oils formulated to relieve menstrual cramps and discomfort.', 'Great for individuals who prefer natural remedies for menstrual pain relief.', 'Contains essential oils like lavender, peppermint, and clary sage to soothe cramps and provide relaxation.', 'https://www.amazon.in/Bhisajyam-Menstrual-ingredients-Ayurvedic-Proprietary/dp/B09W9NWCQ5/ref=sr_1_1_sspa?crid=1SZRK65DFME1T&dib=eyJ2IjoiMSJ9.V_ZKxKFFebPKwdRElKE9njqT9ckVloszd3DW6yBee9UgXlRXFsIks7qkv11NgGwdPijmSOlfqULuDJ0-mydrJzEUSaLy3RD7_aB_bqU2r2bKdwrV6X_x0qfs5guiYTfpGO1vmpbBuxhGATpfiIs1eT5T_xbg8b1UmMiOZOm1gM2II2VX-H_hSr6m2RXariJq25JDDuZl9dU71p3S0MFB3zDdx3zAOFHSXxUOiYzUk8WKq5nk4Ni81mDl4gxb8zarU43LsP2ryeC9C1c5bt1bVZagarH77CVCZXXPjgL0Ibk.2FSSWeRQqklvrBy7Dl9shOgr2kCYV76nwxJnT9ZZ0LA&dib_tag=se&keywords=Essential+Oils+for+Cramps&qid=1741200393&s=hpc&sprefix=essential+oils+for+cramps%2Chpc%2C883&sr=1-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1')">
+                    <img src="https://m.media-amazon.com/images/I/41scxERfWEL._SX300_SY300_QL70_FMwebp_.jpg" alt="Essential Oils for Cramps">
+                    <div class="product-name">Essential Oils for Cramps</div>
+                    <div class="product-price">₹350</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="product-card" onclick="openPopup('Period Pain Relief Gel', '₹299', 'https://m.media-amazon.com/images/I/71Fcwwo8XCL._AC_UL480_FMwebp_QL65_.jpg', 'A gel designed to relieve period pain with cooling and soothing properties.', 'Ideal for those seeking a quick and effective topical solution for menstrual pain relief.', 'Contains natural ingredients like menthol, chamomile, and eucalyptus for fast pain relief and relaxation.', 'https://www.amazon.in/s?k=Period+Pain+Relief+Gel&i=hpc&crid=1K9ZKAGVY1DWI&sprefix=period+pain+relief+gel%2Chpc%2C908&ref=nb_sb_noss_1')">
+                    <img src="https://m.media-amazon.com/images/I/71Fcwwo8XCL._AC_UL480_FMwebp_QL65_.jpg" alt="Period Pain Relief Gel">
+                    <div class="product-name">Period Pain Relief Gel</div>
+                    <div class="product-price">₹299</div>
+                </div>
+            </div>
+            
+        </div>
+<br><br>
+<h3>Pregnancy Medicines</h3>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="product-card" onclick="openPopup('Prenatal Vitamins', '₹550', 'https://m.media-amazon.com/images/I/71UxDmU31AL._AC_UL480_FMwebp_QL65_.jpg', 'A supplement formulated to support the health of mothers during pregnancy, providing essential vitamins and minerals.', 'Ideal for pregnant women seeking to ensure they meet their nutritional needs.', 'Contains folic acid, iron, calcium, and other essential nutrients to support both mother and baby.', 'https://www.amazon.in/s?k=Prenatal+Vitamins&i=hpc&crid=1N2F2NDO26YTW&sprefix=organic+cotton%2Chpc%2C1364&ref=nb_sb_noss_2')">
+                    <img src="https://m.media-amazon.com/images/I/71UxDmU31AL._AC_UL480_FMwebp_QL65_.jpg" alt="Prenatal Vitamins">
+                    <div class="product-name">Prenatal Vitamins</div>
+                    <div class="product-price">₹550</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="product-card" onclick="openPopup('Iron & Folic Acid Tablets', '₹299', 'https://m.media-amazon.com/images/I/41ToLJ-UYWL._SX300_SY300_QL70_FMwebp_.jpg', 'Tablets designed to supplement iron and folic acid, essential for pregnancy and overall health.', 'Ideal for pregnant women and individuals with iron deficiency.', 'Formulated with a combination of iron and folic acid to support healthy blood circulation and fetal development.', 'https://www.amazon.in/Wellbeing-Nutrition-Beetroot-Improved-Hemoglobin/dp/B09FFTKXZR/ref=sr_1_3_sspa?dib=eyJ2IjoiMSJ9.2nOS7ZEF6Rc7m2qiz3t-xTq9tINNDkW2B2_Ribi5cMh_R45iv8TrDaGw72Ny0cS8AkdFgaeu6AcohjRtM60-zQrpSg3-bX-iaiW1rEWCVY883O9gABQxN-5jAP_diNgBMeHEuanh7xQh7KeHmqHGhz89VoEIkIEMPyAsuYdKcyg6BaaMpiAaU1S3MgiY4_qjLh-FaC_VoBd2rPVAmhEcY4GKhrYXS3LlNTgguqE30UxFRXExDr_xPiaD22KtE8pD7frmfOZB9DhNyydBfFNF1rELWLOWxrvzgGo1hw0arus.TpHJwa8X9kS3ZadB3XEpTBh-dkmmDDWOaPzY3QDQsIo&dib_tag=se&keywords=Iron%2B%26%2BFolic%2BAcid%2BTablets&qid=1741201133&sr=8-3-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1')">
+                    <img src="https://m.media-amazon.com/images/I/41ToLJ-UYWL._SX300_SY300_QL70_FMwebp_.jpg" alt="Iron & Folic Acid Tablets">
+                    <div class="product-name">Iron & Folic Acid Tablets</div>
+                    <div class="product-price">₹299</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="product-card" onclick="openPopup('Morning Sickness Relief', '₹350', 'https://m.media-amazon.com/images/I/61AK-YO2UAL._AC_UL480_FMwebp_QL65_.jpg', 'A remedy formulated to ease the discomfort of morning sickness during pregnancy.', 'Ideal for pregnant women experiencing nausea and vomiting during the early stages of pregnancy.', 'Contains natural ingredients to reduce nausea and promote comfort during pregnancy.', 'https://www.amazon.in/s?k=Iron+%26+Folic+Acid+Tablets&i=hpc&crid=3K1ZNXTYJB15H&sprefix=p%2Chpc%2C947&ref=nb_sb_noss_2')">
+                    <img src="https://m.media-amazon.com/images/I/61AK-YO2UAL._AC_UL480_FMwebp_QL65_.jpg" alt="Morning Sickness Relief">
+                    <div class="product-name">Morning Sickness Relief</div>
+                    <div class="product-price">₹350</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="product-card" onclick="openPopup('Calcium Supplements', '₹450', 'https://m.media-amazon.com/images/I/51kV0VR7HLL._AC_UL480_FMwebp_QL65_.jpg', 'A calcium supplement to support bone health, especially during pregnancy and breastfeeding.', 'Ideal for pregnant women and individuals looking to maintain strong bones and teeth.', 'Formulated with calcium and vitamin D for better absorption and bone health support.', 'https://www.amazon.in/s?k=Calcium+Supplements&i=hpc&crid=228HU4CV0FJEL&sprefix=%2Chpc%2C675&ref=nb_sb_noss_2')">
+                    <img src="https://m.media-amazon.com/images/I/51kV0VR7HLL._AC_UL480_FMwebp_QL65_.jpg" alt="Calcium Supplements">
+                    <div class="product-name">Calcium Supplements</div>
+                    <div class="product-price">₹450</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="product-card" onclick="openPopup('Omega-3 DHA Capsules', '₹500', 'https://m.media-amazon.com/images/I/51B6Cg-jKtL._AC_UL480_FMwebp_QL65_.jpg', 'A supplement rich in DHA to support brain health and overall well-being.', 'Ideal for individuals looking to improve brain function, heart health, and reduce inflammation.', 'Contains omega-3 fatty acids, particularly DHA, for better cognitive and heart health.', 'https://www.amazon.in/s?k=Omega-3+DHA+Capsules&i=hpc&crid=3BUNVXRG12VHZ&sprefix=omega-3+dha+capsules%2Chpc%2C767&ref=nb_sb_noss')">
+                    <img src="https://m.media-amazon.com/images/I/51B6Cg-jKtL._AC_UL480_FMwebp_QL65_.jpg" alt="Omega-3 DHA Capsules">
+                    <div class="product-name">Omega-3 DHA Capsules</div>
+                    <div class="product-price">₹500</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="product-card" onclick="openPopup('Lactation Support Supplements', '₹600', 'https://m.media-amazon.com/images/I/71Hcka1OGWL._AC_UL480_FMwebp_QL65_.jpg', 'A supplement designed to support lactating mothers and increase milk production.', 'Ideal for breastfeeding mothers looking for a natural way to support lactation.', 'Formulated with herbs and nutrients that help promote milk production and support lactation.', 'https://www.amazon.in/Emcure-Galact-Granules-Supplement-Lactation/dp/B0BS9BRMQ2/ref=sr_1_1_sspa?crid=UQJZA9XHH8UJ&dib=eyJ2IjoiMSJ9.yRzOzI-1K6cwzMvDSl--yFqFc-UgSrb2elavPiPxiYn00lRlv0mAZ42U2m2M_XEhFeT1bWopYBU81mIK0d1k1PT6j7uBcADQ3eyUjRJIVTfm2-G5VTIGtaTHSsnGd5deR6fxDWE5M7XWdRyF1drY8Yr3Lb8Z4lHim4gxma6nMXdyXmEG5r5o5sNQqbRGMlRkgyaa6vZPEJVO-aUUQpf82RB4t3mB9EhhSsPk8x6Utn9JCYWYp2WMh71N8LzLml_ex5kF0to--T7QHh5W08s77e8uFzm6h8NzVjF19IAC4uE.Qq1wb1t7cBL0lkGw2cP-0ZVOR6BqjwdNiswZcJ2h_GY&dib_tag=se&keywords=Lactation%2BSupport%2BSupplements&nsdOptOutParam=true&qid=1741200916&rdc=1&s=hpc&sprefix=lactation%2Bsupport%2Bsupplements%2Chpc%2C583&sr=1-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1')">
+                    <img src="https://m.media-amazon.com/images/I/71Hcka1OGWL._AC_UL480_FMwebp_QL65_.jpg" alt="Lactation Support Supplements">
+                    <div class="product-name">Lactation Support Supplements</div>
+                    <div class="product-price">₹600</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="product-card" onclick="openPopup('Probiotic for Gut Health', '₹420', 'https://m.media-amazon.com/images/I/614VPFhbdKL._AC_UL480_FMwebp_QL65_.jpg', 'Probiotic capsules that support gut health and improve digestion.', 'Ideal for individuals with digestive issues or looking to improve gut microbiota balance.', 'Contains live bacteria that promote a healthy digestive system and enhance nutrient absorption.', 'https://www.amazon.in/Moderate-Supplement-Metabolism-Probiotics-Prebiotics/dp/B0D2RG43M8/ref=sr_1_1_sspa?crid=SGX3G17QTNI5&dib=eyJ2IjoiMSJ9.hWmSHH81ezNGtg_6MPgS7RP-SKtD7iQm1_KwHiPa_MeUqRiShFJPEWC9E1nRyI9FaXK_rm1wcHgauT80FaqzYGxv2dIDyVBvWyhDaY_vxiBYT3uLopU1S9uJkmMELt3MPwngt19HVFmi7zHfrNwC7Is10TyE28W8xl7BjLfOnuEFTGYlJebNFvXa1VZel0xaztxHng_Hk36T-M89KDTQUZNNk85stedr0CHRgSjA5TzGwwOKB9DN0RkTCFSgJ_m29VZsORoVMklrsSodujv3XzPYJ2RSgF_NJABm8-i6q5Q.SjI3SWmXyCndg3S6WAAyKi3_q_0L8yFdU7ugFvrZM9U&dib_tag=se&keywords=Probiotic+for+Gut+Health&qid=1741200974&s=hpc&sprefix=probiotic+for+gut+health%2Chpc%2C519&sr=1-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1&smid=A1DT8JJLK0O3AM')">
+                    <img src="https://m.media-amazon.com/images/I/614VPFhbdKL._AC_UL480_FMwebp_QL65_.jpg" alt="Probiotic for Gut Health">
+                    <div class="product-name">Probiotic for Gut Health</div>
+                    <div class="product-price">₹420</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="product-card" onclick="openPopup('Stretch Mark Cream', '₹350', 'https://m.media-amazon.com/images/I/41+1dGm3R0L._SY300_SX300_.jpg', 'A cream designed to reduce the appearance of stretch marks during and after pregnancy.', 'Ideal for expecting and new mothers who want to minimize stretch marks.', 'Formulated with natural ingredients that hydrate and support skin elasticity to prevent and reduce stretch marks.', 'https://www.amazon.in/Anti-stretch-stretchmarks-paraben-free-non-fragrant-non-colourant/dp/B09B9G6KQB/ref=sr_1_1_sspa?crid=3HFKVOM3EJ8FL&dib=eyJ2IjoiMSJ9.bfo-H0BMRlMDvciJhl3u0VgGkkUVHfWZZSiCyvlujjR-36iP9z5EWMVbiI1T7ZmWO93yLFCb5XgKszvY3mOR9bKfPs-_UdgfhoIabvrz5yPezNLEC-9zFkfvYH2bDiYGHxilynsmV4u6C-qgBk19dCH4sRPZNhdt0cVoIE0jmHzNGh6iCD2tmhWSDhsWsEszPwuaaMoqtMGb9Uuat1fk8TOrAm005pspyowwfkFRuC-n6ObSvf_0hBisnsP72H8Ecf3sLRSjtK1BapBVCVMD7V4X--U9ZRahirhL1J4RLK0.BPh7XGoSmIO9M2K-KDYnNuUeZLQF_-lPAWRNQMkW-bc&dib_tag=se&keywords=Stretch%2BMark%2BCream&qid=1741201029&s=hpc&sprefix=stretch%2Bmark%2Bcream%2Chpc%2C500&sr=1-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1')">
+                    <img src="https://m.media-amazon.com/images/I/41+1dGm3R0L._SY300_SX300_.jpg" alt="Stretch Mark Cream">
+                    <div class="product-name">Stretch Mark Cream</div>
+                    <div class="product-price">₹350</div>
+                </div>
+            </div>
+            
+             </div>
+    </div>
+
+    <center>No More Items!</center>
+    <nav class="bottom-nav">
+        <a href="#"><i class="fas fa-home"></i>Home</a>
+        <a href="#"><i class="fas fa-user-md"></i>Mood Board</a>
+        <a href="#"><i class="fas fa-heartbeat"></i>Period Tracker</a>
+        <a href="#" class="text-danger"><i class="fas fa-shopping-cart"></i>Pharmacy</a>
+
+    </nav>
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <img id="popup-img" src="" alt="">
+            <div class="product-name" id="popup-name"></div>
+            <div class="product-price" id="popup-price"></div>
+            <div class="popup-description" id="popup-desc"></div>
+            <button class="buy-btn" id="popup-buy">Buy Now</button>
+            <button class="close-btn" onclick="closePopup()">Close</button>
+        </div>
+    </div>
+    <script>
+        function openPopup(name, price, imgSrc, usage, pack, ingredients, buyLink) {
+            document.getElementById('popup-name').innerText = name;
+            document.getElementById('popup-price').innerText = price;
+            document.getElementById('popup-img').src = imgSrc;
+            document.getElementById('popup-desc').innerHTML = `<strong>Usage:</strong> ${usage}<br><strong>Contents:</strong> ${pack}<br><strong>Ingredients:</strong> ${ingredients}`;
+            document.getElementById('popup-buy').onclick = function() {
+                window.location.href = buyLink;
+            };
+            document.getElementById('popup').style.display = 'flex';
+            document.getElementById('main-content').classList.add('blur');
+        }
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('main-content').classList.remove('blur');
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pregnancy Tracker</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            margin: 0; 
+            padding: 0; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            background: linear-gradient(to bottom right, #f9dcdc, #fefaf5, #fdeee0, #f9dcdc);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .main-container { 
+            width: 90%; 
+            max-width: 600px; 
+            padding: 20px; 
+            background: #fff; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+            border-radius: 10px; 
+            text-align: center; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .category { 
+            text-align: left; 
+            font-weight: bold; 
+            margin: 15px 0 10px; 
+        }
+        .options { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 8px; 
+            justify-content: center;
+        }
+        .option { 
+            padding: 8px 12px; 
+            background: #e0e0e0; 
+            border-radius: 20px; 
+            cursor: pointer; 
+            font-size: 14px; 
+            transition: 0.3s; 
+            user-select: none;
+        }
+        .option.selected { 
+            background: #ff8a65; 
+            color: white; 
+        }
+        .save-btn { 
+            margin-top: 20px; 
+            background: #ff7043; 
+            color: white; 
+            border: none; 
+            padding: 12px; 
+            width: 100%; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            font-size: 16px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <h2>Pregnancy Tracker</h2>
+        <p class="cycle-info">Track your symptoms and well-being</p>
+
+        <div class="category">Mood</div>
+        <div class="options" id="mood-options"></div>
+
+        <div class="category">Symptoms</div>
+        <div class="options" id="symptoms-options"></div>
+
+        <div class="category">Sexual Activity</div>
+        <div class="options" id="sex-options"></div>
+
+        <div class="category">Vaginal Discharge</div>
+        <div class="options" id="discharge-options"></div>
+
+        <div class="category">Digestion & Stool</div>
+        <div class="options" id="digestion-options"></div>
+
+        <div class="category">Physical Activity</div>
+        <div class="options" id="physical-options"></div>
+
+        <button class="save-btn" onclick="saveData()">Save & View Summary</button>
+    </div>
+
+    <script>
+        const Moods = ["Calm", "Happy", "Energetic", "Mood Swings", "Irritated", "Sad", "Anxious", "Depressed", "Low Energy", "Confused"];
+        const Symptoms = ["Everything Is Fine", "Cramps", "Acne", "Tender Breasts", "Fatigue", "Backache", "Headache", "Insomnia", "Leg Cramps", "Frequent Urination", "Sleepiness"];
+        const SexualActivity = ["Didn't Have Sex", "Protected Sex", "Unprotected Sex"];
+        const VaginalDischarge = ["No Fluid", "Creamy", "Watery", "Sticky", "Watery White", "Bloody", "Thick White", "Dark"];
+        const Digestion = ["Nausea", "Bloating", "Constipation", "Diarrhea"];
+        const PhysicalActivity = ["No Exercise", "Yoga", "Gym", "Swimming", "Walking"];
+
+        function createOptions(category, optionsArray) {
+            let container = document.getElementById(category);
+            optionsArray.forEach(option => {
+                let div = document.createElement("div");
+                div.classList.add("option");
+                div.textContent = option;
+                div.onclick = function () {
+                    div.classList.toggle("selected");
+                };
+                container.appendChild(div);
+            });
+        }
+
+        function saveData() {
+            let data = {
+                mood: getSelected("mood-options"),
+                symptoms: getSelected("symptoms-options"),
+                sexualActivity: getSelected("sex-options"),
+                vaginalDischarge: getSelected("discharge-options"),
+                digestion: getSelected("digestion-options"),
+                physicalActivity: getSelected("physical-options"),
+                date: new Date().toISOString().split('T')[0]  // Store the date
+            };
+
+            localStorage.setItem("pregnancyData", JSON.stringify(data));
+            alert("Data Saved! Redirecting to Summary...");
+            window.location.href = "mood_and_symptoms_result.html";
+        }
+
+        function getSelected(category) {
+            return Array.from(document.querySelectorAll(`#${category} .selected`)).map(el => el.textContent);
+        }
+
+        createOptions("mood-options", Moods);
+        createOptions("symptoms-options", Symptoms);
+        createOptions("sex-options", SexualActivity);
+        createOptions("discharge-options", VaginalDischarge);
+        createOptions("digestion-options", Digestion);
+        createOptions("physical-options", PhysicalActivity);
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Period Tracker</title>
+  <link rel="stylesheet" href="period.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Period Tracker</h1>
+      <p>Keep track of your period dates in a stylish way!</p>
+    </div>
+
+    <div class="calendar-container">
+      <div class="calendar">
+        <input type="date" id="selectedDate" onchange="handleDateChange(event)" />
+        <p class="date-display" id="dateDisplay">Select a date</p>
+      </div>
+
+      <button class="btn" onclick="logPeriod()">Log Period</button>
+    </div>
+
+    <div class="logged-periods">
+      <h2>Logged Periods:</h2>
+      <ul id="periodList"></ul>
+    </div>
+  </div>
+
+  <script src="period.js"></script>
+</body>
+</html>
+

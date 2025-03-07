@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Music Board</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .mood-button {
+            font-size: 18px;
+            padding: 15px 25px;
+            margin: 10px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            background-color: #ff6f61;
+            color: white;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        .mood-button:hover {
+            background-color: #ff3b2f;
+            transform: scale(1.1);
+        }
+
+        /* Music symbol animation styles */
+        .music-symbol {
+            position: absolute;
+            font-size: 50px;
+            animation: popUp 2s ease-in-out;
+            pointer-events: none; /* Allow clicks to pass through */
+        }
+
+        @keyframes popUp {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.5);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(0);
+                opacity: 0;
+            }
+        }
+    </style>
+
+    <!-- Jotform bot library -->
+    <script src="https://cdn.jotfor.ms/s/umd/latest/for-embedded-agent.js"></script>
+
+</head>
+<body>
+
+<!-- Jotform bot initialization -->
+<script>
+    window.addEventListener("DOMContentLoaded", function() {
+        window.AgentInitializer.init({
+            rootId: "JotformAgent-019567739bdd7a048af8e9b6c89ee6e09dd0",
+            formID: "019567739bdd7a048af8e9b6c89ee6e09dd0",
+            queryParams: ["skipWelcome=1", "maximizable=1"],
+            domain: "https:\/\/www.jotform.com",
+            isInitialOpen: false,
+            isDraggable: false,
+            background: "linear-gradient(180deg, #C8CEED 0%, #C8CEED 100%)",
+            buttonBackgroundColor: "#0a1551",
+            buttonIconColor: "#fff",
+            variant: false,
+            customizations: {
+                greeting: "Yes",
+                greetingMessage: "Hi! How can I assist you?",
+                pulse: "Yes",
+                position: "right"
+            }
+        });
+    });
+</script>
+
+<h1>🎵 Choose Your Mood & Enjoy Music 🎶</h1>
+<div id="mood-container"></div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Create music symbol animation on page load
+        function createMusicSymbol() {
+            const musicSymbol = document.createElement("div");
+            musicSymbol.classList.add("music-symbol");
+            musicSymbol.innerText = "🎵";
+            musicSymbol.style.left = `${Math.random() * 100}%`;
+            musicSymbol.style.top = `${Math.random() * 100}%`;
+            document.body.appendChild(musicSymbol);
+            setTimeout(() => {
+                musicSymbol.remove(); // Remove after animation
+            }, 2000); // Duration of animation (2 seconds)
+        }
+
+        // Trigger the music symbol animation every 0.5s for 4 times
+        for (let i = 0; i < 4; i++) {
+            setTimeout(createMusicSymbol, i * 500);
+        }
+
+        const moodSongs = {
+            "Happy": ["https://open.spotify.com/playlist/37i9dQZF1DWTwbZHrJRIgD?si=-LAkA1F3R4KNpywHq_wamQ"], // Happy Hits
+            "Relaxed": ["https://open.spotify.com/playlist/5jYQ4O9Ii3tQcSbJMtVrk8?si=WP8RERv5RPiPH-wX8tA3VQ"], // Chill Vibes
+            "Energetic": ["https://open.spotify.com/playlist/3mSm688yR6UeaAJNf93Ydr?si=EAnnwJ0_TrCONY5aTde6vg"], // Workout Motivation
+            "Creative": ["https://open.spotify.com/playlist/5EJ9Hq61gHWzlDKNitqBik?si=4s9NxTwIQbWBXoLTh-nxiQ"], // Deep Focus
+            "Romantic": ["https://open.spotify.com/playlist/1IvEH3HDObcFnkFW6zeWvM?si=b_5FrVBVS8OGtDJMhoKZZw"], // Love Songs
+            "Focus": ["https://open.spotify.com/playlist/7zNvXEjgmE1110slXAuZie?si=qukmmoPRTf2bvjBLfWhk9g"], // Work & Study
+            "Party": ["https://open.spotify.com/playlist/4F9XjRMCeyxlmysK16V85W?si=wOp6ANHKRyi2a_yLPjxnoQ"], // Party Hits
+            "Nostalgic": ["https://open.spotify.com/playlist/37i9dQZF1DWYRTlrhMB12D?si=Mg5BquRDT3CqIbgdjUUcfA"] // Throwback Songs
+        };
+
+        const moodContainer = document.getElementById("mood-container");
+
+        for (let mood in moodSongs) {
+            let button = document.createElement("button");
+            button.innerText = mood;
+            button.className = "mood-button";
+            button.addEventListener("click", function () {
+                const playlistLink = moodSongs[mood][0];
+                window.open(playlistLink, "_blank"); // Open the Spotify playlist
+            });
+            moodContainer.appendChild(button);
+        }
+    });
+</script>
+
+</body>
+</html>

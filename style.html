@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            padding-top: 60px; /* Header ke liye space taaki content chhup na jaye */
+        }
+
+        /* Fixed Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000; /* Ensure it's on top */
+        }
+
+        .profile-icon, .notification-icon {
+            font-size: 20px;
+            cursor: pointer;
+            text-decoration: none;
+            color: black;
+        }
+
+        .profile-icon:hover, .notification-icon:hover {
+            opacity: 0.7;
+        }
+
+        /* Welcome Box */
+        .welcome-box {
+            text-align: center;
+            padding: 15px;
+            background-color: white;
+            margin: 10px;
+            border-radius: 10px;
+        }
+
+        .user-id {
+            font-size: 14px;
+            color: gray;
+        }
+
+        /* Main Feature Container */
+        .feature-container {
+            background-color: white;
+            padding: 10px;
+            border-radius: 12px;
+            margin: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Feature Boxes */
+        .box-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .box {
+            background-color: #F28D8D;
+            padding: 10px;
+            text-align: center;
+            color: white;
+            border-radius: 8px;
+            font-size: 14px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .box:hover {
+            background-color: #e26d6d;
+        }
+
+        /* Medication Box */
+        .medication-box {
+            background-color: #4aaca8;
+            padding: 15px;
+            color: white;
+            text-align: center;
+            border-radius: 8px;
+            margin: 20px 10px;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+        }
+
+        .medication-box:hover {
+            background-color: #3d8f8b;
+        }
+
+        .medication-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon {
+            font-size: 22px;
+            margin-right: 10px;
+        }
+
+        .text h3, .text p {
+            margin: 5px 0;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Fixed Header -->
+    <div class="header">
+        <a href="profile.html" class="profile-icon">👤</a>
+        <a href="notifications.html" class="notification-icon">🔔</a>
+    </div>
+
+    <!-- Welcome Section -->
+    <div class="welcome-box">
+        <p>WELCOME</p>
+        <h2><b>Tanveer</b> <span class="user-id">(ETPT006802)</span></h2>
+    </div>
+
+    <!-- Main Feature Section -->
+    <div class="feature-container">
+        <div class="box-container">
+            <a href="pharmacy.html" class="box">📦 Pharmacy</a>
+            <a href="learn.html" class="box">📚 Learn</a>
+            <a href="tracker.html" class="box">📅 Tracker</a>
+            <a href="doctors.html" class="box">👨‍⚕️ Doctors</a>
+        </div>
+    </div>
+
+    <!-- Medication Banner -->
+    <a href="medications.html" class="medication-box">
+        <div class="medication-content">
+            <div class="icon">💊</div>
+            <div class="text">
+                <h3>Need Medication?</h3>
+                <p>Visit our e-pharmacy to buy items for your period.</p>
+            </div>
+        </div>
+    </a>
+
+</body>
+</html>

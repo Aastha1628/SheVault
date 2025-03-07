@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Bootstrap Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+ <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+        
+        body {
+            background: linear-gradient(to bottom right, #f9dcdc, #fefaf5, #fdeee0, #f9dcdc);
+            transition: filter 0.3s ease;
+        }
+        
+        .blur {
+            filter: blur(5px);
+        }
+        
+        .header-image {
+            width: 90%;
+            height: 450px;
+            background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2)), 
+                        url('https://img.freepik.com/premium-photo/attractive-girl-with-makeup-showcasing-youth-skincare-concept_875825-89802.jpg') no-repeat center center/cover;
+            margin: 70px auto 20px auto;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 50px;
+            font-weight: normal;
+            text-transform: none;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            padding: 20px;
+        }
+        .header-image span {
+            font-family: 'Cookie', cursive;
+            letter-spacing: 1px;
+        }
+        .product-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+        }
+        .product-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .product-name {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .product-price {
+            color: #e86b5a;
+            font-size: 18px;
+        }
+        
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .popup-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 400px;
+        }
+        .popup img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .popup-description {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+        .buy-btn {
+            background: #e86b5a;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .close-btn {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        
+    
+        .custom-navbar {
+    background-color: #fff; /* Light background */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    
+    height: 60px; /* Adjust height */
+    padding: 5px 0;
+    display: flex;
+    align-items: center;
+}
+.custom-navbar .navbar-brand {
+    font-family: 'Cookie', cursive;
+    font-size: 50px;
+    font-weight: bold;
+    color: #e86b5a; /* Apply the color to the text */
+}
+
+
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background: white;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    bottom: 50px;
+    width: 100%;
+}
+
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: white;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+
+.bottom-nav a {
+    flex: 1;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+}
+
+.bottom-nav a i {
+    display: block;
+    font-size: 20px;
+}
+
+.text-danger {
+    color: red;
+}
+.bottom-nav a.active {
+    background-color: #f0f0f0;
+    color: #117a7a;
+}
+
+
+    </style>
+
+<!-- Jotform bot library -->
+<script src="https://cdn.jotfor.ms/s/umd/latest/for-embedded-agent.js"></script>
+
+</head>
+<body>
+    <nav class="navbar custom-navbar">
+        <div class="container">
+            <a class="navbar-brand">Pharmacy</a>
+        </div>
+    </nav>
+    
+    <!-- Jotform bot initialization -->
+<script>
+    window.addEventListener("DOMContentLoaded", function() {
+        window.AgentInitializer.init({
+            rootId: "JotformAgent-019567739bdd7a048af8e9b6c89ee6e09dd0",
+            formID: "019567739bdd7a048af8e9b6c89ee6e09dd0",
+            queryParams: ["skipWelcome=1", "maximizable=1"],
+            domain: "https:\/\/www.jotform.com",
+            isInitialOpen: false,
+            isDraggable: false,
+            background: "linear-gradient(180deg, #C8CEED 0%, #C8CEED 100%)",
+            buttonBackgroundColor: "#0a1551",
+            buttonIconColor: "#fff",
+            variant: false,
+            customizations: {
+                greeting: "Yes",
+                greetingMessage: "Hi! How can I assist you?",
+                pulse: "Yes",
+                position: "right"
+            }
+        });
+    });
+</script>
+
+    <!-- Header Image -->
+    <div class="header-image"><span>Beauty begins the moment you decide to be yourself.</span></div>
+    
+    <div class="container">
+        <div class="row g-4">
+            <!-- Skincare Products -->
+            <h3>Skincare Products</h3>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Beauty of Joseon Dynasty Cream', '₹1200', 'https://cdn3.foxy.in/pictures/product/image/68999/748406/beauty-of-joseon-dynasty-cream-50ml.jpeg?width=720&format=webp', 'Used to moisturize and hydrate the skin, giving it a smooth and healthy appearance.', 'Each jar contains 50ml of product.', 'Contains various herbal ingredients, including Ginseng and Rice Extracts.', 'https://www.foxy.in/products/beauty-of-joseon-dynasty-cream-50ml')">
+                        <img src="https://cdn3.foxy.in/pictures/product/image/68999/748406/beauty-of-joseon-dynasty-cream-50ml.jpeg?width=720&format=webp" alt="Beauty of Joseon Dynasty Cream">
+                        <div class="product-name">Beauty of Joseon Dynasty Cream</div>  
+                        <div class="product-price">₹1200</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Minimilistic Alpha Arbutin 2% Face Serum', '₹599', 'https://sfycdn.speedsize.com/56385b25-4e17-4a9a-9bec-c421c18686fb/beminimalist.co/cdn/shop/files/AlphaArNew.png?crop=center&height=720&v=1721397838&width=480', 'Used to lighten dark spots and even out skin tone.', 'Each bottle contains 30ml of serum.', 'Contains 2% Alpha Arbutin, which helps to reduce hyperpigmentation.', 'https://www.beminimalist.co/products/alpha-arbutin-2-face-serum')">
+                        <img src="https://sfycdn.speedsize.com/56385b25-4e17-4a9a-9bec-c421c18686fb/beminimalist.co/cdn/shop/files/AlphaArNew.png?crop=center&height=720&v=1721397838&width=480" alt="Minimilistic Alpha Arbutin 2% Face Serum">
+                        <div class="product-name">Minimilistic Alpha Arbutin 2% Face Serum</div>  
+                        <div class="product-price">₹599</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Rice & Ceramide Moisturizing Cream (50ml)', '₹832', 'https://cdn3.foxy.in/pictures/product/image/54263/343758/the-face-shop-rice-ceramide-moisturizing-cream.jpg?width=720&format=webp', 'Used to hydrate and lock in moisture, while also helping to strengthen the skin barrier.', 'Each jar contains 50ml of cream.', 'Contains Rice Extract and Ceramide, which provide nourishment and hydration.', 'https://www.foxy.in/products/rice-ceramide-moisturizing-cream')">
+                        <img src="https://cdn3.foxy.in/pictures/product/image/54263/343758/the-face-shop-rice-ceramide-moisturizing-cream.jpg?width=720&format=webp" alt="Rice & Ceramide Moisturizing Cream">
+                        <div class="product-name">Rice & Ceramide Moisturizing Cream (50ml)</div>  
+                        <div class="product-price">₹832</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Dot & Key Cica & Salicylic Anti Acne Routine', '₹1838', 'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTKJhKGxg9oQB0XZtavrSBbJ9HkotZekcWn7x1M-kT9Oyr-ywBdkeZTVvdhb2giWUogHtpC7-UxVPBY4qY4DqbFS8FvrdXLHKUei3-oYJo', 'A complete acne treatment routine that helps reduce breakouts and inflammation.', 'Each set contains multiple products including a cleanser, serum, and mask.', 'Contains Cica and Salicylic Acid to soothe and treat acne.', 'https://www.dotandkey.com/collections/anti-acne')">
+                        <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTKJhKGxg9oQB0XZtavrSBbJ9HkotZekcWn7x1M-kT9Oyr-ywBdkeZTVvdhb2giWUogHtpC7-UxVPBY4qY4DqbFS8FvrdXLHKUei3-oYJo" alt="Dot & Key Cica & Salicylic Anti Acne Routine">
+                        <div class="product-name">Dot & Key Cica & Salicylic Anti Acne Routine</div>  
+                        <div class="product-price">₹1838</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Mamaearth Rice Facial Kit for Glass Skin', '₹346', 'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQkWXXyqfUwKXAFsWukSFAN3LEZo9BmamTIllvEyDoJQaUPVeZE2dYKHZLyuoPehbyIykvmYFkbu3BG48hQZE9QFCN1cfa4BC7POoy08zwoRCDpxP5WjH25SQ', 'A complete facial kit designed to give your skin a dewy, glass-like finish.', 'Each kit includes multiple products for a full facial routine.', 'Contains Rice Extract, known for brightening and moisturizing the skin.', 'https://www.mamaearth.in/products/mamaearth-rice-facial-kit-for-glass-skin')">
+                        <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQkWXXyqfUwKXAFsWukSFAN3LEZo9BmamTIllvEyDoJQaUPVeZE2dYKHZLyuoPehbyIykvmYFkbu3BG48hQZE9QFCN1cfa4BC7POoy08zwoRCDpxP5WjH25SQ" alt="Mamaearth Rice Facial Kit for Glass Skin">
+                        <div class="product-name">Mamaearth Rice Facial Kit for Glass Skin</div>  
+                        <div class="product-price">₹346</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Dr. Sheth\'s Azelaic Acid Serum', '₹499', 'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTG6qNO01Htmv519vcWOx9ou-ZHdEAjqxWAMsB9Jx7xRoJ-SyEAVU0OagcZRC6IslyAFyIlbkBoz-qf4LgHLE6iB1e1l3zmOQtKO2J7Y74', 'Used to target pigmentation and acne, providing a bright and even skin tone.', 'Each bottle contains 30ml of serum.', 'Contains Azelaic Acid, known for its brightening and acne-fighting properties.', 'https://www.drsheths.com/products/azelaic-acid-serum')">
+                        <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTG6qNO01Htmv519vcWOx9ou-ZHdEAjqxWAMsB9Jx7xRoJ-SyEAVU0OagcZRC6IslyAFyIlbkBoz-qf4LgHLE6iB1e1l3zmOQtKO2J7Y74" alt="Dr. Sheth's Azelaic Acid Serum">
+                        <div class="product-name">Dr. Sheth's Azelaic Acid Serum</div>  
+                        <div class="product-price">₹499</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Dot & Key Hyaluronic Face Moisturizer', '₹369', 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcT-PpdaeNI2zSnZDxrzAq0Ua-jy7vJA_JgIl5h42LQdTs_eEu9pWrpx8EpkF2wAaP6cEQvkmlkNjX8tV9xoXEDvGYsQE78MzPwz2Rp1Meo5sh5ab99fop8PtA', 'Hydrating and nourishing moisturizer that helps keep the skin plump and smooth.', 'Each bottle contains 50g of moisturizer.', 'Contains Hyaluronic Acid, known for its hydration and skin-plumping properties.', 'https://www.dotandkey.com/collections/face-moisturizer')">
+                        <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcT-PpdaeNI2zSnZDxrzAq0Ua-jy7vJA_JgIl5h42LQdTs_eEu9pWrpx8EpkF2wAaP6cEQvkmlkNjX8tV9xoXEDvGYsQE78MzPwz2Rp1Meo5sh5ab99fop8PtA" alt="Dot & Key Hyaluronic Face Moisturizer">
+                        <div class="product-name">Dot & Key Hyaluronic Face Moisturizer</div>  
+                        <div class="product-price">₹369</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Neutrogena Hydro Boost Water Gel', '₹1012', 'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTOw9OpQIx9BaGO4gMg5lQmabQd5cvmWUF_12drHYpHeYWRnQ6Efns829i6OZDiX30ttbcKjKwVdKD_rLu3BVbHPli3fiEN8o0fNOET7a8gh9XVM2EtiMGfsQ', 'A refreshing gel-based moisturizer that provides deep hydration for all skin types.', 'Each jar contains 50g of gel.', 'Contains Hyaluronic Acid, providing long-lasting moisture and a smooth finish.', 'https://www.neutrogena.com/products/hydro-boost-water-gel')">
+                        <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTOw9OpQIx9BaGO4gMg5lQmabQd5cvmWUF_12drHYpHeYWRnQ6Efns829i6OZDiX30ttbcKjKwVdKD_rLu3BVbHPli3fiEN8o0fNOET7a8gh9XVM2EtiMGfsQ" alt="Neutrogena Hydro Boost Water Gel">
+                        <div class="product-name">Neutrogena Hydro Boost Water Gel</div>  
+                        <div class="product-price">₹1012</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Cetaphil Oil Skin Cleansing & Moisturizing Combo', '₹1299', 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRsmh5VTby-a2J_KDX174qUaL7g6kCTvao4Is2tEEI-cy_g3UNhlrpdLZoXehJrSsbVMc0KZBLve53pPm3rcVqCnH_TbLR25KbwgTetPeI-JqETx6SU11_DFw', 'A combo kit with a cleanser and moisturizer designed to cleanse and hydrate oily skin.', 'The kit includes 1 cleanser and 1 moisturizer for complete skincare.', 'Contains Glycerin and Vitamin E for softening and hydration.', 'https://www.cetaphil.in/products/cetaphil-oil-skin-cleansing-moisturizing-combo')">
+                        <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRsmh5VTby-a2J_KDX174qUaL7g6kCTvao4Is2tEEI-cy_g3UNhlrpdLZoXehJrSsbVMc0KZBLve53pPm3rcVqCnH_TbLR25KbwgTetPeI-JqETx6SU11_DFw" alt="Cetaphil Oil Skin Cleansing & Moisturizing Combo">
+                        <div class="product-name">Cetaphil Oil Skin Cleansing & Moisturizing Combo</div>  
+                        <div class="product-price">₹1299</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Loreal Paris Glycolic Bright Glowing Day Cream', '₹415', 'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcS4AyIV681l2s_004lby8B6BKem71Q-E1EKHfo-IWMjq1bRG5lLFkAbCaVoe1azDp96z3HYdAHkbXzUEP0-nwIEBunC_jSD5zAwTwzJ8mVJSA9FKiZpCFKKntE', 'A day cream that brightens and evens out skin tone, giving you a glowing complexion.', 'Each jar contains 50ml of cream for daily use.', 'Contains Glycolic Acid, known for its exfoliating and brightening properties.', 'https://www.lorealparis.in/products/glycolic-bright-glowing-day-cream')">
+                        <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcS4AyIV681l2s_004lby8B6BKem71Q-E1EKHfo-IWMjq1bRG5lLFkAbCaVoe1azDp96z3HYdAHkbXzUEP0-nwIEBunC_jSD5zAwTwzJ8mVJSA9FKiZpCFKKntE" alt="Loreal Paris Glycolic Bright Glowing Day Cream">
+                        <div class="product-name">Loreal Paris Glycolic Bright Glowing Day Cream</div>  
+                        <div class="product-price">₹415</div>
+                    </div>
+                </div>
+                
+            
+            
+            
+            
+            
+            
+            
+            
+            </div>
+            
+            <!-- Body Care Products -->
+            <h3>Body Care Products</h3>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Chemist At Play Exfoliating Body Wash', '₹899', 'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRO5OI8fgXuwrsHT86Qfice3oNskf5kRg4MPUU9Znt1hVDqeCpA0DlAwqmayzNuzAalFFU9ZrZqexUe_LYKGbYBeXoLMKeUxgLSHA1KvJtSxuHVUDl-FFU-gA', 'A body wash formulated to exfoliate and refresh your skin, leaving it soft and smooth.', 'Each bottle contains 200ml of exfoliating body wash.', 'Contains natural exfoliants like fruit acids and mild scrubbing agents.', 'https://www.chemistatplay.com/products/exfoliating-body-wash')">
+                        <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRO5OI8fgXuwrsHT86Qfice3oNskf5kRg4MPUU9Znt1hVDqeCpA0DlAwqmayzNuzAalFFU9ZrZqexUe_LYKGbYBeXoLMKeUxgLSHA1KvJtSxuHVUDl-FFU-gA" alt="Chemist At Play Exfoliating Body Wash">
+                        <div class="product-name">Chemist At Play Exfoliating Body Wash</div>
+                        <div class="product-price">₹899</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Cocoa Butter Bodycare Combo', '₹699', 'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcT547eIzaXUN75HqVw8qUx9D4fWr5IbuuVdhLk6yNJihuHnMCMW6PauREl5UW6vJOYTcVtY3ZJZsSVLQiqG5vIF0dVGboOH_OcMZAwWDUufHDKxWeAwcI-z', 'A combo pack of cocoa butter body care products designed to hydrate and nourish your skin.', 'Contains cocoa butter body lotion and body scrub for smooth and hydrated skin.', 'Formulated with natural cocoa butter and rich emollients for moisturizing.', 'https://www.bodyshop.com/products/cocoa-butter-bodycare-combo')">
+                        <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcT547eIzaXUN75HqVw8qUx9D4fWr5IbuuVdhLk6yNJihuHnMCMW6PauREl5UW6vJOYTcVtY3ZJZsSVLQiqG5vIF0dVGboOH_OcMZAwWDUufHDKxWeAwcI-z" alt="Cocoa Butter Bodycare Combo">
+                        <div class="product-name">Cocoa Butter Bodycare Combo</div>
+                        <div class="product-price">₹699</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Soothing & Cleansing Body Scrub', '₹499', 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSijsTEE8x3c0GRF2-HQUkPyaSbRKJtUp2ihg21Twwu-dK-9oVPd-o9uiCU5GoH88yRI-CddTvor0USKrhqBjqIYvoS4IU2OWC2DxxkKI5LN4ZK1MUF2MIrow', 'A gentle body scrub that soothes and cleanses your skin, leaving it soft and refreshed.', 'Contains natural exfoliants and nourishing oils for smooth skin.', 'Rich in soothing ingredients like Aloe Vera and Coconut Oil for hydration.', 'https://www.naturalbodycare.com/products/soothing-cleansing-body-scrub')">
+                        <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSijsTEE8x3c0GRF2-HQUkPyaSbRKJtUp2ihg21Twwu-dK-9oVPd-o9uiCU5GoH88yRI-CddTvor0USKrhqBjqIYvoS4IU2OWC2DxxkKI5LN4ZK1MUF2MIrow" alt="Soothing & Cleansing Body Scrub">
+                        <div class="product-name">Soothing & Cleansing Body Scrub</div>
+                        <div class="product-price">₹499</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('TNW The Natural Wash Charcoal Soap', '₹160', 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcS4lTIidlTdoLG4P5uzbNPTZPIk6b4QdX1MjffufMRjhADWqqY1CZL9BgFmtJsFf50rei-yO8-9I-rQrQ22KQPZCKt6NX5IfA-jkoDPyo2_Fp3qgo-LZ0cUuA', 'A charcoal soap that deeply cleanses and detoxifies your skin, removing impurities.', 'Each soap bar weighs 100g, perfect for regular use.', 'Formulated with activated charcoal and natural oils for a smooth finish.', 'https://www.thenaturalwash.com/products/charcoal-soap')">
+                        <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcS4lTIidlTdoLG4P5uzbNPTZPIk6b4QdX1MjffufMRjhADWqqY1CZL9BgFmtJsFf50rei-yO8-9I-rQrQ22KQPZCKt6NX5IfA-jkoDPyo2_Fp3qgo-LZ0cUuA" alt="TNW The Natural Wash Charcoal Soap">
+                        <div class="product-name">TNW The Natural Wash Charcoal Soap</div>
+                        <div class="product-price">₹160</div>
+                    </div>
+                </div>
+                
+                <br>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Moisturizing Body Lotion Spray for Even-Tone', '₹199', 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQsZTAx3xPB8E6pb-GIf9-qYuPRKOSmzbQyp-zdP6tBJzBHTI21EYa17GXKdjAiXlRWzEZU4VF-Z6kCkXCc_K2qjdxsCp5RCZxy9lTXQIY', 'A lightweight body lotion spray that helps even out your skin tone and hydrates your skin.', 'Perfect for daily use to keep your skin nourished and even-toned.', 'Contains ingredients that hydrate and promote an even skin tone.', 'https://www.example.com/products/body-lotion-spray')">
+                        <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQsZTAx3xPB8E6pb-GIf9-qYuPRKOSmzbQyp-zdP6tBJzBHTI21EYa17GXKdjAiXlRWzEZU4VF-Z6kCkXCc_K2qjdxsCp5RCZxy9lTXQIY" alt="Moisturizing Body Lotion Spray for Even-Tone">
+                        <div class="product-name">Moisturizing Body Lotion Spray for Even-Tone</div>
+                        <div class="product-price">₹199</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Kazarmaa Premium Bodycare Gift Set For Women', '₹1599', 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcS8llNoz9gxzkeXL5gdy_vwOi2BApHU2C-4IsApiJvKSwUMlVK8LbNkxRjBY3E8_jjIg5IsLGw0S09Pg3PzRxx020aoFm2rrT2Ay_mVpG3zXYAIkuU2ouyx', 'A luxurious bodycare gift set designed for women, containing high-quality products for skincare.', 'Perfect for gifting or pampering yourself with luxurious skincare.', 'Includes premium skincare essentials to hydrate and nourish the skin.', 'https://www.kazarmaa.com/products/premium-bodycare-gift-set')">
+                        <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcS8llNoz9gxzkeXL5gdy_vwOi2BApHU2C-4IsApiJvKSwUMlVK8LbNkxRjBY3E8_jjIg5IsLGw0S09Pg3PzRxx020aoFm2rrT2Ay_mVpG3zXYAIkuU2ouyx" alt="Kazarmaa Premium Bodycare Gift Set For Women">
+                        <div class="product-name">Kazarmaa Premium Bodycare Gift Set For Women</div>
+                        <div class="product-price">₹1599</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Kama Ayurveda Kokum Almond Moisturiser', '₹595', 'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQdUwVwCJn_5dr4VOoPUXZ8SULGXLckIReqf4ZF0Z3uG2R2zQ-35aaLybzBhCgqePTU12c6xqIdgj5UnBBW03ZaBd7fM089hV9PN8baUTbQD669T2ZDENVFbec', 'A nourishing moisturiser that combines the goodness of Kokum and Almond oils to hydrate and repair your skin.', 'Perfect for dry skin, it provides deep hydration and nourishment.', 'Contains natural ingredients like Kokum Butter and Almond Oil for smooth, radiant skin.', 'https://www.kamaayurveda.com/products/kokum-almond-moisturiser')">
+                        <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQdUwVwCJn_5dr4VOoPUXZ8SULGXLckIReqf4ZF0Z3uG2R2zQ-35aaLybzBhCgqePTU12c6xqIdgj5UnBBW03ZaBd7fM089hV9PN8baUTbQD669T2ZDENVFbec" alt="Kama Ayurveda Kokum Almond Moisturiser">
+                        <div class="product-name">Kama Ayurveda Kokum Almond Moisturiser</div>
+                        <div class="product-price">₹595</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('mCaffeine Detan & Hydrate Body Care Routine', '₹1147', 'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQWpVPV7E_gK4xKSmwN9zJ1RSc2JXUbOBXpF4nqjoRBhwFxG93LwMGI1aG8E37Kmo8p4dR1tSWm2MhW1WiXIJQcPGRtzP0kj1p4IF5muoo6tgWtaY8o3Nq-', 'A body care routine to detan and hydrate your skin, leaving it smooth and nourished.', 'Contains a coffee-infused body scrub, lotion, and gel for an energizing and hydrating experience.', 'Perfect for all skin types, this set helps remove tan and provide deep hydration.', 'https://www.mcaffeine.com/products/detan-hydrate-body-care-routine')">
+                        <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQWpVPV7E_gK4xKSmwN9zJ1RSc2JXUbOBXpF4nqjoRBhwFxG93LwMGI1aG8E37Kmo8p4dR1tSWm2MhW1WiXIJQcPGRtzP0kj1p4IF5muoo6tgWtaY8o3Nq-" alt="mCaffeine Detan & Hydrate Body Care Routine">
+                        <div class="product-name">mCaffeine Detan & Hydrate Body Care Routine</div>
+                        <div class="product-price">₹1147</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Body Care Routine with Ishal Naturalz', '₹890', 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcT8UHAiuYpCSBdg6ikqTWn_gYe9Gb8MLTsPUNY-SMZIfyLbuZ4pXLYfTTtFmFfLQNqwLH3JSEB1KddW1JrMI67YjU-W_ag8TDiMHdPYLwDb', 'A complete body care routine for glowing and nourished skin using Ishal Naturalz products.', 'Perfect for those looking for a natural skincare routine to maintain healthy skin.', 'Contains high-quality natural ingredients to pamper and care for your skin.', 'https://www.ishalnaturalz.com/products/body-care-routine')">
+                        <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcT8UHAiuYpCSBdg6ikqTWn_gYe9Gb8MLTsPUNY-SMZIfyLbuZ4pXLYfTTtFmFfLQNqwLH3JSEB1KddW1JrMI67YjU-W_ag8TDiMHdPYLwDb" alt="Body Care Routine with Ishal Naturalz">
+                        <div class="product-name">Body Care Routine with Ishal Naturalz</div>
+                        <div class="product-price">₹890</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Dot & Key Super Bright Body Lotion', '₹395', 'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSLP5Bqw84u8Pjqp7tj8qZjTp1gV9OAbJVDa-hmIDIsPoxHQMe1O3-liKQP_LLdFSt784RsQb9QqopG2hHlrOYXevtWd1EiONCjP3AsZhRnTI2doGGWhcNk', 'A brightening body lotion that helps even out skin tone and provides intense moisture.', 'Perfect for daily use to keep your skin glowing and nourished.', 'Contains brightening ingredients that help lighten skin tone and reduce dark spots.', 'https://www.dotandkey.com/products/super-bright-body-lotion')">
+                        <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSLP5Bqw84u8Pjqp7tj8qZjTp1gV9OAbJVDa-hmIDIsPoxHQMe1O3-liKQP_LLdFSt784RsQb9QqopG2hHlrOYXevtWd1EiONCjP3AsZhRnTI2doGGWhcNk" alt="Dot & Key Super Bright Body Lotion">
+                        <div class="product-name">Dot & Key Super Bright Body Lotion</div>
+                        <div class="product-price">₹395</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Renee Bloom Bath & Body Care Set', '₹1200', 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRffj9MBuBrb37yGduaZKdxYIbO4qLfV-3D-xMqdO2hoabWhn_sNIPfsDZG1g9CVUrq3QgCrC3hlE-bFOdl3_E0Rh4bCZ-dHdfc9MOn-xm3jjBZGCnTwNEr', 'A luxurious bath and body care set to enhance your skincare routine with Renee Bloom products.', 'Ideal for anyone looking for a premium skincare routine for relaxation and nourishment.', 'Includes body care essentials that provide hydration and rejuvenation.', 'https://www.renee.com/products/bloom-bath-body-care-set')">
+                        <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRffj9MBuBrb37yGduaZKdxYIbO4qLfV-3D-xMqdO2hoabWhn_sNIPfsDZG1g9CVUrq3QgCrC3hlE-bFOdl3_E0Rh4bCZ-dHdfc9MOn-xm3jjBZGCnTwNEr" alt="Renee Bloom Bath & Body Care Set">
+                        <div class="product-name">Renee Bloom Bath & Body Care Set</div>
+                        <div class="product-price">₹1200</div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Be Bodywise Salicylic Acid BodyWash', '₹149', 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSG0SwEkVCzR3y4f8Cf4t1DnU0wEz1amlZyV8tgBjS_MYi3v1ZMdzDtaMB_bDPK464qa3H14-U8qQGMW6Zwsb1JAc4_5CuWdt5nc6HbuAL2y69LA8CLkGiCuA', 'A refreshing body wash containing salicylic acid to cleanse and exfoliate your skin.', 'Great for acne-prone skin, it helps to exfoliate and prevent breakouts.', 'Formulated with salicylic acid to cleanse deeply and keep the skin clear.', 'https://www.bebodywise.com/products/salicylic-acid-bodywash')">
+                        <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSG0SwEkVCzR3y4f8Cf4t1DnU0wEz1amlZyV8tgBjS_MYi3v1ZMdzDtaMB_bDPK464qa3H14-U8qQGMW6Zwsb1JAc4_5CuWdt5nc6HbuAL2y69LA8CLkGiCuA" alt="Be Bodywise Salicylic Acid BodyWash">
+                        <div class="product-name">Be Bodywise Salicylic Acid BodyWash</div>
+                        <div class="product-price">₹149</div>
+                    </div>
+                </div>
+                
+                     <br>
+                    </div>
+            
+            <!-- Hair Care Products -->
+            <h3>Hair Care Products</h3>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Minimalist Hair Growth Actives Hair', '₹799', 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQbJVoW4W3nFvkQ29YBIp0XdSjDecnTrhM3HF1guVbm5Z2EwgGOID8YiozvncWUSywgbZThMJ-0qtwrjXgb9kxWiTfoMliY0bvwxX4Ry1FuL-Wku45USVmQ', 'A hair growth active serum formulated to promote hair growth and reduce hair fall.', 'Ideal for those experiencing hair thinning and hair loss, looking to restore healthy hair growth.', 'Contains hair growth actives that stimulate the scalp and nourish hair follicles.', 'https://www.minimalist.in/products/hair-growth-actives-serum')">
+                        <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQbJVoW4W3nFvkQ29YBIp0XdSjDecnTrhM3HF1guVbm5Z2EwgGOID8YiozvncWUSywgbZThMJ-0qtwrjXgb9kxWiTfoMliY0bvwxX4Ry1FuL-Wku45USVmQ" alt="Minimalist Hair Growth Actives Hair">
+                        <div class="product-name">Minimalist Hair Growth Actives Hair</div>
+                        <div class="product-price">₹799</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Mamaearth Rosemary Anti-Hair Fall Combo', '₹510', 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQcXGxYafSpjkiGiFvuCaZg9znrnqRWjzOOibfoovO6V3JRDMtiEjdJ_d7crq1Lv34WDndqbM79Havzaq3CXcCjnXxrLO-KsCCpFjBpkVDIIUVLJSS9XL06', 'A combo pack that helps reduce hair fall and strengthen hair with the power of rosemary.', 'Perfect for individuals facing hair fall issues and looking for a natural remedy.', 'Contains rosemary and other natural ingredients to nourish hair and reduce hair fall.', 'https://www.mamaearth.in/products/rosemary-anti-hair-fall-combo')">
+                        <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQcXGxYafSpjkiGiFvuCaZg9znrnqRWjzOOibfoovO6V3JRDMtiEjdJ_d7crq1Lv34WDndqbM79Havzaq3CXcCjnXxrLO-KsCCpFjBpkVDIIUVLJSS9XL06" alt="Mamaearth Rosemary Anti-Hair Fall Combo">
+                        <div class="product-name">Mamaearth Rosemary Anti-Hair Fall Combo</div>
+                        <div class="product-price">₹510</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Re\'equil Anti-Frizz Hair Conditioner', '₹499', 'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcS3i5zq6Zdq8g-Ei0ktXZj_ini_y2h_ziL6ida_XD0fPsm92sp--FljBK1iZ9gY-5dKHKyxbOEx4vhtzloATf2FKHIawAHdw7VYKI0HWoGGzJJpJwksbResNA', 'A nourishing conditioner that controls frizz and provides smoothness to the hair.', 'Ideal for people with frizzy hair who need a smoother and more manageable texture.', 'Formulated to deeply condition the hair, reduce frizz, and add shine.', 'https://www.reequil.com/products/anti-frizz-hair-conditioner')">
+                        <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcS3i5zq6Zdq8g-Ei0ktXZj_ini_y2h_ziL6ida_XD0fPsm92sp--FljBK1iZ9gY-5dKHKyxbOEx4vhtzloATf2FKHIawAHdw7VYKI0HWoGGzJJpJwksbResNA" alt="Re'equil Anti-Frizz Hair Conditioner">
+                        <div class="product-name">Re'equil Anti-Frizz Hair Conditioner</div>
+                        <div class="product-price">₹499</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Alps Goodness Frizz-Control Hair Mask', '₹228', 'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSkSshXOQ1YLJVv9bcaZcDaaafs2Gb8DySw3xJfY57IyPe7Bdql-SNTxdMNFUsnEcLZWs_Y5YVtR9EPewQSJl9B3-9jJjn8Co42rKGKTNXwVlbadCd9N2xYhNU', 'A hair mask that controls frizz and makes the hair smooth and manageable.', 'Best for individuals with frizzy or curly hair who want to restore smoothness and shine.', 'Contains natural ingredients that provide nourishment while taming frizz.', 'https://www.alpsgoodness.com/products/frizz-control-hair-mask')">
+                        <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSkSshXOQ1YLJVv9bcaZcDaaafs2Gb8DySw3xJfY57IyPe7Bdql-SNTxdMNFUsnEcLZWs_Y5YVtR9EPewQSJl9B3-9jJjn8Co42rKGKTNXwVlbadCd9N2xYhNU" alt="Alps Goodness Frizz-Control Hair Mask">
+                        <div class="product-name">Alps Goodness Frizz-Control Hair Mask</div>
+                        <div class="product-price">₹228</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Plant Protein Hair Conditioner', '₹795', 'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQQuthHV27VeiGq7dKPIKdPuUxpVa4uf-LRQpWtmDZ_X81bVcQaGzGj1O1VcRcQ0hrOrDQ-TKBaXZ4ap_ZM3QMlca1_n0NmRdfveCHcsw8vgZBk_HecUU57&usqp=CAc', 'A protein-rich conditioner that strengthens hair with plant-based ingredients.', 'Great for those with weak or damaged hair, looking for nourishment and strength.', 'Contains plant-based proteins that penetrate hair follicles for improved health.', 'https://www.example.com/plant-protein-hair-conditioner')">
+                        <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQQuthHV27VeiGq7dKPIKdPuUxpVa4uf-LRQpWtmDZ_X81bVcQaGzGj1O1VcRcQ0hrOrDQ-TKBaXZ4ap_ZM3QMlca1_n0NmRdfveCHcsw8vgZBk_HecUU57&usqp=CAc" alt="Plant Protein Hair Conditioner">
+                        <div class="product-name">Plant Protein Hair Conditioner</div>
+                        <div class="product-price">₹795</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Bare Anatomy Anti-Hair Fall Mask', '₹475', 'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTV6qeNXuCxZjg67i4JJw_0lIOvKDYcIiPQWPE6YYr_Fy1lkY6haEExN4dbzRvb2JBmCUbs6qIL7QjMM5sCdQV2PmoNopd6BPqCiFiANAeeyunHwPQ8pkFKCJw', 'A nourishing hair mask designed to reduce hair fall and strengthen hair roots.', 'Perfect for people dealing with hair loss and thinning hair.', 'Formulated with natural ingredients to support hair regrowth and prevent further fall.', 'https://www.bareanatomy.com/anti-hair-fall-mask')">
+                        <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTV6qeNXuCxZjg67i4JJw_0lIOvKDYcIiPQWPE6YYr_Fy1lkY6haEExN4dbzRvb2JBmCUbs6qIL7QjMM5sCdQV2PmoNopd6BPqCiFiANAeeyunHwPQ8pkFKCJw" alt="Bare Anatomy Anti-Hair Fall Mask">
+                        <div class="product-name">Bare Anatomy Anti-Hair Fall Mask</div>
+                        <div class="product-price">₹475</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('L\'Oreal Paris Extravagent Dry Shampoo', '₹199', 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSTXxrlAIKJl8Cu6Yf5QAKT06wVvuaDFCukFpC-QHwHucM0zwOYPvJh7fU_BuayIfAbnVe5GNzGGoASmpm7HY5__v5o-roZs_qmKmH8yiRCOyqpVUO7yOqXkA', 'A dry shampoo that refreshes hair and removes oil without washing.', 'Ideal for people who need a quick refresh without washing their hair.', 'Cleans and volumizes hair with a light, pleasant scent, leaving no white residue.', 'https://www.lorealparis.com/extravagent-dry-shampoo')">
+                        <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSTXxrlAIKJl8Cu6Yf5QAKT06wVvuaDFCukFpC-QHwHucM0zwOYPvJh7fU_BuayIfAbnVe5GNzGGoASmpm7HY5__v5o-roZs_qmKmH8yiRCOyqpVUO7yOqXkA" alt="L'Oreal Paris Extravagent Dry Shampoo">
+                        <div class="product-name">L'Oreal Paris Extravagent Dry Shampoo</div>
+                        <div class="product-price">₹199</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('BBLUNT Moisture Combo', '₹843', 'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQndijfot87zktMjl9aZZdZvkbBpQ6j9ughzl5nQonfs5l-AoOLujkmLYqZTW2uNmXNaHWhBVV576Cb7e-SDKexWr-TV9EGU37YSEBu_pa__EwVEESjNsFKew', 'A moisture-rich combo that hydrates and nourishes hair, leaving it soft and shiny.', 'Perfect for dry and damaged hair in need of hydration and moisture.', 'Formulated with nourishing ingredients that restore moisture and smoothness.', 'https://www.bblunt.com/products/moisture-combo')">
+                        <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQndijfot87zktMjl9aZZdZvkbBpQ6j9ughzl5nQonfs5l-AoOLujkmLYqZTW2uNmXNaHWhBVV576Cb7e-SDKexWr-TV9EGU37YSEBu_pa__EwVEESjNsFKew" alt="BBLUNT Moisture Combo">
+                        <div class="product-name">BBLUNT Moisture Combo</div>
+                        <div class="product-price">₹843</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('SESA Rephase 2 Step Hair Growth Kit', '₹465', 'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTaxbqrJOG9r38BQtEvnZ0r4ELhKTsNDS3mNE_udbB3wgjUZYq8tGBnr2nEXk0DOUbpbrLiEAXRdAfLoT_xoszjV9n1VJakCmW1tFGI0J-0Qp5znHUXd5ArEw', 'A two-step kit designed to promote hair growth and reduce hair fall.', 'Ideal for those experiencing hair thinning or hair fall.', 'Contains active ingredients that nourish hair roots and promote growth.', 'https://www.sesa.in/rephase-2-step-hair-growth-kit')">
+                        <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTaxbqrJOG9r38BQtEvnZ0r4ELhKTsNDS3mNE_udbB3wgjUZYq8tGBnr2nEXk0DOUbpbrLiEAXRdAfLoT_xoszjV9n1VJakCmW1tFGI0J-0Qp5znHUXd5ArEw" alt="SESA Rephase 2 Step Hair Growth Kit">
+                        <div class="product-name">SESA Rephase 2 Step Hair Growth Kit</div>
+                        <div class="product-price">₹465</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Argan Grapeseed Hair Balm', '₹309', 'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcREYaVNmcMRAePbXCc6BVWHCHF6ttkqtM7lmjblPH8lpXZIH9brVue5Wz-XMTmU76bnMPNRGiKskLTnNSR34DzTq2s87nqiqHKCPKIg9cHiJTDie0ZS0l2N9Q&usqp=CAc', 'A rich balm formulated with argan and grapeseed oils that nourish and hydrate hair.', 'Best for those with dry or frizzy hair looking for deep hydration.', 'Combines the benefits of argan and grapeseed oils to restore moisture and softness.', 'https://www.example.com/argan-grapeseed-hair-balm')">
+                        <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcREYaVNmcMRAePbXCc6BVWHCHF6ttkqtM7lmjblPH8lpXZIH9brVue5Wz-XMTmU76bnMPNRGiKskLTnNSR34DzTq2s87nqiqHKCPKIg9cHiJTDie0ZS0l2N9Q&usqp=CAc" alt="Argan Grapeseed Hair Balm">
+                        <div class="product-name">Argan Grapeseed Hair Balm</div>
+                        <div class="product-price">₹309</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Moroccanoil Hydrating Shampoo', '₹399', 'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRdSWmUMPYVhqeKKq1a2PLdT5EPV9MotVlSpgFqMF9341wSKMAPE3j3Ljt2FuY-oEgQEcf8HpnIX8hQqPZJKTVSMU8cg1mvlC22CW-g5b7C0xtkL7LUBPNwnA', 'A moisturizing shampoo that hydrates and softens hair while restoring moisture balance.', 'Great for dry and damaged hair in need of hydration and softness.', 'Enriched with argan oil and other moisturizing ingredients for a healthy shine.', 'https://www.moroccanoil.com/hydrating-shampoo')">
+                        <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRdSWmUMPYVhqeKKq1a2PLdT5EPV9MotVlSpgFqMF9341wSKMAPE3j3Ljt2FuY-oEgQEcf8HpnIX8hQqPZJKTVSMU8cg1mvlC22CW-g5b7C0xtkL7LUBPNwnA" alt="Moroccanoil Hydrating Shampoo">
+                        <div class="product-name">Moroccanoil Hydrating Shampoo</div>
+                        <div class="product-price">₹399</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Brillare Nourishing Argan Oil', '₹220', 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTgABYOa9a2mu62km0KcTt43yapRZy-y1h3yYPHwQPW0OyMZolBb5ZE-KsUjqXOh3eYVhnbZR3VhgbMzSEoYLi9AaisCKRwbqqlaZ2PZNBufGaYAZyQS18P', 'A nourishing argan oil that restores moisture and improves hair texture and shine.', 'Perfect for dry and damaged hair that needs intensive care and nourishment.', 'Formulated with pure argan oil, this product helps to hydrate and repair hair.', 'https://www.brillare.in/nourishing-argan-oil')">
+                        <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTgABYOa9a2mu62km0KcTt43yapRZy-y1h3yYPHwQPW0OyMZolBb5ZE-KsUjqXOh3eYVhnbZR3VhgbMzSEoYLi9AaisCKRwbqqlaZ2PZNBufGaYAZyQS18P" alt="Brillare Nourishing Argan Oil">
+                        <div class="product-name">Brillare Nourishing Argan Oil</div>
+                        <div class="product-price">₹220</div>
+                    </div>
+                </div>
+                 </div>
+        </div>
+    </div>
+    <br><br>
+    <center>No More Items!</center>
+    <nav class="bottom-nav">
+        <a href="#"><i class="fas fa-home"></i>Home</a>
+        <a href="#"><i class="fas fa-user-md"></i>Music</a>
+        <a href="#"><i class="fas fa-heartbeat"></i>Period Tracker</a>
+        <a href="#" class="text-danger"><i class="fas fa-shopping-cart"></i>Pharmacy</a>
+    </nav>
+
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <img id="popup-img" src="" alt="">
+            <div class="product-name" id="popup-name"></div>
+            <div class="product-price" id="popup-price"></div>
+            <div class="popup-description" id="popup-desc"></div>
+            <button class="buy-btn" id="popup-buy">Buy Now</button>
+            <button class="close-btn" onclick="closePopup()">Close</button>
+        </div>
+    </div>
+
+
+
+    <script>
+        function openPopup(name, price, imgSrc, usage, pack, ingredients, buyLink) {
+            document.getElementById('popup-name').innerText = name;
+            document.getElementById('popup-price').innerText = price;
+            document.getElementById('popup-img').src = imgSrc;
+            document.getElementById('popup-desc').innerHTML = `<strong>Usage:</strong> ${usage}<br><strong>Contents:</strong> ${pack}<br><strong>Ingredients:</strong> ${ingredients}`;
+            document.getElementById('popup-buy').onclick = function() {
+                window.location.href = buyLink;
+            };
+            document.getElementById('popup').style.display = 'flex';
+            document.getElementById('main-content').classList.add('blur');
+        }
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('main-content').classList.remove('blur');
+        }
+    </script>
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

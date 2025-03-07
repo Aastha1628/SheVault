@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Period Tracker - Calendar</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 0; padding: 20px; background: linear-gradient(to bottom right, #f9dcdc, #fefaf5, #fdeee0, #f9dcdc); }
+        .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        h2 { color: #ff7043; }
+        .data-box { background: #fff3e0; padding: 10px; border-radius: 8px; margin-bottom: 10px; text-align: left; }
+        .category { font-weight: bold; margin-top: 10px; }
+        .back-btn { background: #ff7043; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; font-size: 16px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Tracked Data</h2>
+        <div id="data-container"></div>
+        <button class="back-btn" onclick="goBack()">Back to Tracker</button>
+        <a href="recommendationperiod.html"><button class="back-btn">View Recommendations</button></a>
+    </div>
+
+    <script>
+        function displayData() {
+            let data = JSON.parse(localStorage.getItem("trackerData"));
+            let container = document.getElementById("data-container");
+
+            if (!data) {
+                container.innerHTML = "<p>No data saved yet!</p>";
+                return;
+            }
+
+            container.innerHTML = `
+                <div class="data-box">
+                    <div class="category">Date:</div> <p>${data.date}</p>
+                    <div class="category">Mood:</div> <p>${data.mood.join(", ") || "No data"}</p>
+                    <div class="category">Symptoms:</div> <p>${data.symptoms.join(", ") || "No data"}</p>
+                    <div class="category">Sexual Activity:</div> <p>${data.sexualActivity.join(", ") || "No data"}</p>
+                    <div class="category">Vaginal Discharge:</div> <p>${data.vaginalDischarge.join(", ") || "No data"}</p>
+                    <div class="category">Digestion & Stool:</div> <p>${data.digestion.join(", ") || "No data"}</p>
+                    <div class="category">Physical Activity:</div> <p>${data.physicalActivity.join(", ") || "No data"}</p>
+                </div>
+            `;
+        }
+
+        function saveData() {
+            let data = {
+                date: document.getElementById("date").value,
+                mood: document.getElementById("mood").value.split(","),
+                symptoms: document.getElementById("symptoms").value.split(","),
+                sexualActivity: document.getElementById("sexual-activity").value.split(","),
+                vaginalDischarge: document.getElementById("vaginal-discharge").value.split(","),
+                digestion: document.getElementById("digestion").value.split(","),
+                physicalActivity: document.getElementById("physical-activity").value.split(",")
+            };
+
+            localStorage.setItem("trackerData", JSON.stringify(data));
+        }
+
+        function goBack() {
+            window.location.href = "home.html";
+        }
+
+        displayData();
+    </script>
+</body>
+</html>

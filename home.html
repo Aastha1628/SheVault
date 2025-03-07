@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #f9dcdc, #fefaf5, #fdeee0, #f9dcdc);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding-top: 100px;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 97%;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 60px;
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            border-radius: 10px;
+        }
+        .logo {
+            width: 50px;
+            height: 50px;
+        }
+        .profile-icon {
+            margin-left: auto;
+            font-size: 22px;
+            text-decoration: none;
+            color: #333;
+            cursor: pointer;
+        }
+
+        /* Welcome Section */
+        .welcome-container {
+            text-align: center;
+            background-color: white;
+            width: 70%;
+            height: 260px;
+            margin: 40px auto;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .welcome-container p {
+            font-size: 32px;
+            font-weight: bold;
+            color: #e26d6d;
+            margin-bottom: 25px;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+
+        /* Feature Section */
+        .box-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 10px;
+            justify-content: center;
+        }
+        .box {
+            background-color: #F28D8D;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+        .box:hover {
+            background-color: #e26d6d;
+        }
+
+        /* Medication Banner */
+        .medication-box {
+            background-color: white;
+            margin: 30px auto;
+            padding: 20px;
+            width: 75%;
+            text-align: center;
+            color: black;
+            border-radius: 8px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: background 0.3s;
+        }
+        .medication-box:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 0;
+        }
+        .bottom-nav a {
+            text-decoration: none;
+            color: black;
+            font-size: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .bottom-nav a i {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        .bottom-nav a.active {
+            color: red;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 400px) {
+            .box-container {
+                grid-template-columns: 1fr;
+            }
+            .header {
+                padding: 10px;
+            }
+            .box {
+                font-size: 16px;
+                padding: 15px;
+            }
+        }
+    </style>
+    <!-- Jotform bot library -->
+    <script src="https://cdn.jotfor.ms/s/umd/latest/for-embedded-agent.js"></script>
+
+</head>
+<body>
+
+    <!-- Jotform bot initialization -->
+    <script>
+        window.addEventListener("DOMContentLoaded", function() {
+            window.AgentInitializer.init({
+                rootId: "JotformAgent-019567739bdd7a048af8e9b6c89ee6e09dd0",
+                formID: "019567739bdd7a048af8e9b6c89ee6e09dd0",
+                queryParams: ["skipWelcome=1", "maximizable=1"],
+                domain: "https:\/\/www.jotform.com",
+                isInitialOpen: false,
+                isDraggable: false,
+                background: "linear-gradient(180deg, #C8CEED 0%, #C8CEED 100%)",
+                buttonBackgroundColor: "#0a1551",
+                buttonIconColor: "#fff",
+                variant: false,
+                customizations: {
+                    greeting: "Yes",
+                    greetingMessage: "Hi! How can I assist you?",
+                    pulse: "Yes",
+                    position: "right"
+                }
+            });
+        });
+    </script>
+
+
+    <div class="header">
+        <img src="logoher.png" alt="SheVault Logo" class="logo">
+        <a href="profile.html" class="profile-icon">👤</a>
+    </div>
+    
+    <div class="welcome-container">
+        <p>✨ Welcome to SheVault ✨</p>
+        <div class="box-container">
+            <a href="1.html" class="box">📦 Pharmacy</a>
+            <a href="beauty.html" class="box">🧖‍♀️ Beauty & Cosmetics</a>
+            <a href="set_up_your_tracker.html" class="box">📅 Tracker</a>
+            <a href="music.html" class="box">🎶 Music</a>
+        </div>
+    </div>
+    
+    <a href="Medicine.html" class="medication-box">
+        <div class="icon">💊</div>
+        <div>
+            <h3>Need Medication?</h3>
+            <p>Visit our e-pharmacy to buy items for your period.</p>
+        </div>
+    </a>
+    
+    <nav class="bottom-nav">
+        <a href="home.html" class="active"><i class="fas fa-home"></i> Home</a>
+        <a href="music.html"><i class="fas fa-user-md"></i> Music</a>
+        <a href="set_up_your_tracker.html"><i class="fas fa-heartbeat"></i> Tracker</a>
+        <a href="1.html"><i class="fas fa-shopping-cart"></i> Pharmacy</a>
+    </nav>
+</body>
+</html>

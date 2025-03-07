@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SheVaults</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to bottom right,#f9dcdc, #fefaf5, #fdeee0, #f9dcdc);
+            position: relative;
+            min-height: 100vh;
+            padding-bottom: 60px;
+
+        }
+
+        .bg-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 450px;  
+            height: auto;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .container {
+            width: 90%; 
+            max-width: 420px; 
+            padding: 25px; 
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            z-index: 10;
+            margin-top: 30px; /* Adjusted */
+            text-align: center;
+        }
+
+        .logo {
+            width: 160px; /* Slightly Smaller */
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #e86b5a;
+            font-size: 28px; /* Adjusted */
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        p {
+            color: #666;
+            font-size: 16px; /* Adjusted */
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            background-color: #e86b5a;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #d85a4b;
+        }
+
+        .link {
+            display: block;
+            margin-top: 15px;
+            font-size: 15px;
+            color: #117a7a;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            width: 200%;
+            text-align: center;
+            padding: 10px 0;
+            background: rgba(255, 255, 255, 0.85);
+            position: absolute;
+            bottom: 0;
+            font-size: 14px;
+        }
+    </style>
+
+
+</head>
+<body>
+
+    <!-- Background Logo -->
+    <img src="health_care_for_women_logo.webp" alt="Background Logo" class="bg-logo">
+
+    <div class="container">
+        <img src="health_care_for_women_logo.webp" alt="Logo" class="logo">
+        <h1>Welcome to SheVaults</h1>
+        <p>Start your health journey today!</p>
+        <a href="getstarted.html" class="btn">Get Started</a>
+        <a href="#" class="link">I'm a Healthcare Provider</a>
+        <a href="login.html" class="link">Already have an account? <b>Login</b></a>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 SheVault | All Rights Reserved</p>
+    </footer>
+
+    </script>
+
+</body>
+</html>

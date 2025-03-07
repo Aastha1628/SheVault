@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Bootstrap Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+        
+        body {
+            background-color: #fefaf5;
+            transition: filter 0.3s ease;
+        }
+        
+        .blur {
+            filter: blur(5px);
+        }
+        
+        .header-image {
+            width: 90%;
+            height: 450px;
+            background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), 
+                        url('https://i.pinimg.com/736x/ed/9a/9a/ed9a9ab61844910ac6508c28ecd25212.jpg') no-repeat center center/cover;
+            margin: 70px auto 20px auto;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 50px;
+            font-weight: normal;
+            text-transform: none;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            padding: 20px;
+        }
+        .header-image span {
+            font-family: 'Cookie', cursive;
+            letter-spacing: 1px;
+        }
+        .product-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+        }
+        .product-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .product-name {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .product-price {
+            color: #e86b5a;
+            font-size: 18px;
+        }
+        /* Popup Styles */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .popup-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 400px;
+        }
+        .popup img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .popup-description {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+        .buy-btn {
+            background: #e86b5a;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .close-btn {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="header-image"><span>"Taking care of yourself doesn’t mean ‘me first,’ it means ‘me too."</span></div>
+    
+    <div class="container" id="main-content">
+        <br><br>
+        <div class="row g-4">
+            <br><br>
+            <h3>Period Medicines</h3>
+            <br>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Primolut-N Tablet', '₹54', 'https://images.apollo247.in/pub/media/catalog/product/P/R/PRI0009_1_1.jpg?tr=w-264,q-80,f-webp,dpr-1.25,c-at_max', 'Used to treat irregular periods, heavy bleeding, and menstrual disorders.', 'Each pack contains 10 tablets.', 'Contains Norethisterone, a synthetic form of the hormone progesterone.', 'https://www.medicineindia.in/products/primolut-n-SKU-0557?srsltid=AfmBOoqCl2Y6YnlyU4E3AR-hbyEEb1PY3MHANgPliuoPZMlTFodBQDuvNkc')">
+                        <img src="https://images.apollo247.in/pub/media/catalog/product/P/R/PRI0009_1_1.jpg?tr=w-264,q-80,f-webp,dpr-1.25,c-at_max" alt="">
+                        <div class="product-name">Primolut-N Tablet</div>  
+                        <div class="product-price">₹54 </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Charak M2 Tone Syrup', '₹165', 'https://images.apollo247.in/pub/media/catalog/product/M/2/M2T0004_1-AUG23_1.jpg?tr=w-264,q-80,f-webp,dpr-1.25,c-at_max', 'Used for menstrual cycle regulation, hormonal balance, and overall reproductive health.', 'Each bottle contains 200ml of syrup.', 'Contains herbal ingredients like Ashoka, Lodhra, and Shatavari.', 'https://www.apollopharmacy.in/te/otc/m2-tone-syrup-450ml?srsltid=AfmBOoo4UurQ79pRCVOhgYbVnA7g8O79Tl9zhMjlGLkDmaQ50GVDATyoVxU')">
+                        <img src="https://images.apollo247.in/pub/media/catalog/product/M/2/M2T0004_1-AUG23_1.jpg?tr=w-264,q-80,f-webp,dpr-1.25,c-at_max" alt="Charak M2 Tone Syrup">
+                        <div class="product-name">Charak M2 Tone Syrup</div>  
+                        <div class="product-price">₹165</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Dhootapapeshwar Shatavari Kalpa', '₹470', 'https://m.media-amazon.com/images/I/719FFCaZ8tL.AC_UL480_FMwebp_QL65.jpg', 'An Ayurvedic supplement that enhances immunity, supports women\'s health during various life stages, and promotes overall well-being.', 'Each jar contains 600 grams of granules.', 'Contains Shatavari, Ela (Cardamom), and Sharkara (Sugar).', 'https://www.amazon.in/Inducare-Shatavari-Chocolate-Lactation-Nurishment/dp/B0CKT6HKVF/ref=sr_1_7?crid=2F3EMT6GJ4C27&dib=eyJ2IjoiMSJ9.fczEvX8LEtF36-jeSVmVx7D7lUXtpuxRtX8HGt8zcFHJFMXgZ47-Xr3F2oa-3SHQbzm6AQKBE3K-qEZdP4u8okKshEU4YyoLIe-BpcvvIcw19yLw-nPADFkYfgejDdx2fCs7Jl3N3kPUmIgn5Oh5NDsiwkBAWoFJjdM4jj6Vf2WBT4qRzvnZxauuQg9KdPguYimPyipYdLQkjCl_8gZTE_GJ3KpSdS7O9c6_LSGcUJidyMTg6vklPUxA2ES6KyTWzR2PXLfe-NCTehqt9HXfGRQ1rwfnANn21cCYBy7fKiruKlVGmL-iBq8T1PQHqfpMLz9LeQxkM0N2JqyeM4MGRs7difyG7zWI5y9xUemBtPu0V7SIWsFLgh2CTWFn4Zwg5cHUbe75M71CjfRED6T3rUkJyB6JgN2uek1Hou1zoW5hlR1s5WBz8ofHdcFZElSn.RZ19697PIDWYsPlDlU1KV9284D-_Uulu0UdljV7kapU&dib_tag=se&keywords=Dhootapapeshwar+Shatavari+Kalpa&nsdOptOutParam=true&qid=1741116710&sprefix=dhootapapeshwar+shatavari+kalpa%2Caps%2C641&sr=8-7')">
+                        <img src="https://m.media-amazon.com/images/I/719FFCaZ8tL.AC_UL480_FMwebp_QL65.jpg" alt="Dhootapapeshwar Shatavari Kalpa">
+                        <div class="product-name"> Shatavari Kalpa</div>  
+                        <div class="product-price">₹499</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Nveda Period Pain Relief Capsules', '₹499', 'https://m.media-amazon.com/images/I/61eFyZvI1GL.SL1500.jpg', 'An Ayurvedic formulation combining seven herbs to reduce menstrual pain, cramps, and discomfort.', 'Each bottle contains 60 capsules.', 'Contains Shatavari, Ashoka, Lodhra, and other Ayurvedic herbs.', 'https://www.amazon.in/Menstrual-Ayurvedic-Relieves-Irritability-Increases/dp/B0CGV87DH1/ref=sr_1_1_sspa?crid=3APT79NM2WF5M&dib=eyJ2IjoiMSJ9.3eWxot7YupHPToGjCZ97Sl43uucjuo2lw9vOP39jOJ67e6MiUzkr1hy2B-S8kbTAkDRcS09EnTVqs8xB9SUSo5nbLFXKMLqlY1IZydFSu_TZwWUJXkRBz14AHlhhqnHj234yZT8loYjRgB3KPEDinXJhrs1bv5Mp3sNJ3X0ZhfGWbAhByGWMKVGQNhYqHfl0R9qrXTMgyAUyKZsjgCRJRT8hqbj-5W-49rXaoa07aI0eay3aK3pWrdYvA30otSGcDj2xAs4rb4TbegMxaNmN4XTqsl3t6BqrJ2B9wyFpHCY.ov-wb2sDD9jlENWzEl7Li_ZKI3CmuzAHZJknNRa9_WA&dib_tag=se&keywords=Nveda+Period+Pain+Relief+Capsules&nsdOptOutParam=true&qid=1741116885&sprefix=nveda+period+pain+relief+capsules%2Caps%2C656&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1')">
+                        <img src="https://m.media-amazon.com/images/I/61eFyZvI1GL.SL1500.jpg" alt="Nveda Period Pain Relief Capsules">
+                        <div class="product-name">Nveda Period Pain Relief Capsules</div>  
+                        <div class="product-price">₹499</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('GNC Women\'s Evening Primrose Oil 1300mg - 180 Softgels', 'Rs. 1400', 'PureRelief® Deluxe Heating Pad', 'Supports hormonal balance and promotes healthy skin.', 'Each bottle contains 180 softgels.', 'Evening Primrose Oil providing Gamma-Linolenic Acid (GLA).', 'https://www.gnc.com/sexual-health/265631.html')">
+                        <img src="https://m.media-amazon.com/images/I/61YVNLJ4fsL.AC_SR146,118_QL70.jpg" alt="GNC Women's Evening Primrose Oil 1300mg - 180 Softgels">
+                        <div class="product-name">GNC Women's Evening Primrose Oil 1300mg - 180 Softgels</div>  
+                        <div class="product-price">$29.99</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('PureRelief® Deluxe Heating Pad', '$34.99', 'https://m.media-amazon.com/images/I/81pUSpfwkQL.AC_UL480_FMwebp_QL65.jpg', 'Enjoy a rapidly heating pad with an ergonomic LED controller featuring 4 heat settings from warm to high based on your needs.', 'Size: 12” x 24”', 'Features InstaHeat Technology, Super-Soft Microplush, and 2-Hour Auto Shut-Off.', 'https://pureenrichment.com/products/purerelief-deluxe-heating-pad')">
+                        <img src="https://m.media-amazon.com/images/I/81pUSpfwkQL.AC_UL480_FMwebp_QL65.jpg" alt="PureRelief® Deluxe Heating Pad">
+                        <div class="product-name">PureRelief® Deluxe Heating Pad</div>  
+                        <div class="product-price">Rs. 649</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('BOOTY WIPES Flushable Wipes for Women', '₹1,999', 'https://m.media-amazon.com/images/I/611SLeRn6YL.AC_UL480_FMwebp_QL65.jpg', 'pH-balanced feminine wipes infused with Aloe and Vitamin E, suitable for sensitive skin.', 'Each pack contains 80 wipes; the set includes 4 packs.', 'Flushable, biodegradable, and free from alcohol and parabens.', 'https://www.amazon.in/dp/B07Y5R4D5T')">
+                        <img src="https://m.media-amazon.com/images/I/611SLeRn6YL.AC_UL480_FMwebp_QL65.jpg" alt="BOOTY WIPES Flushable Wipes for Women">
+                        <div class="product-name">BOOTY WIPES Flushable Wipes for Women</div>  
+                        <div class="product-price">₹237</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Pee Safe Feminine Cramp Relief Roll-On', '₹199', 'https://m.media-amazon.com/images/I/51RFz6mlwOL.AC_UL480_FMwebp_QL65.jpg', 'Pee Safe\'s Feminine Cramp Relief Roll-On is a herbal solution providing instant pain relief from menstrual cramps. It is made with natural ingredients like Satva Pudina and Eucalyptus Oil extracts.', 'Each bottle contains 10 ml of roll-on.', 'Contains Satva Pudina (Menthol) and Eucalyptus Oil for effective relief.', 'https://www.peesafe.com/products/pee-safe-feminine-cramp-relief-roll-on-with-ayurveda-extracts-10-ml')">
+                        <img src="https://m.media-amazon.com/images/I/51RFz6mlwOL.AC_UL480_FMwebp_QL65.jpg" alt="Pee Safe Feminine Cramp Relief Roll-On">
+                        <div class="product-name">Pee Safe Feminine Cramp Relief Roll-On</div>  
+                        <div class="product-price">₹199</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Namhya Periods Care Tea', '₹499', 'https://m.media-amazon.com/images/I/61CNdLXeiUL.AC_UL480_FMwebp_QL65.jpg', 'A herbal blend formulated to support hormonal balance, regularize periods, and enhance fertility.', 'Each pack contains 100 grams of loose tea leaves.', 'Contains Ashoka, Shatavari, Lodhra, Ashwagandha, and other Ayurvedic herbs.', 'https://www.distacart.com/products/namhya-periods-care-tea-for-pcos-pcod')">
+                        <img src="https://m.media-amazon.com/images/I/61CNdLXeiUL.AC_UL480_FMwebp_QL65.jpg" alt="Namhya Periods Care Tea">
+                        <div class="product-name">Namhya Periods Care Tea</div>  
+                        <div class="product-price">₹499</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Pee Safe Reusable Menstrual Cup - Medium', '₹299', 'https://images-na.ssl-images-amazon.com/images/I/61oYpVZzYzL.SL1500.jpg', 'Pee Safe\'s reusable menstrual cup is made from medical-grade silicone, ensuring a comfortable and safe period experience.', 'Each pack contains one medium-sized menstrual cup.', 'Made from 100% medical-grade silicone, suitable for women between 18-25 years old.', 'https://www.amazon.in/dp/B07WZP3NPQ')">
+                        <img src="" alt="Pee Safe Reusable Menstrual Cup - Medium">
+                        <div class="product-name">Pee Safe Reusable Menstrual Cup - Medium</div>  
+                        <div class="product-price">₹299</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Carmesi Eco-Conscious Sanitary Pads - XL (10 Pads)', '₹220', 'https://www.bigbasket.com/media/uploads/p/l/40206862_1-carmesi-eco-conscious-sanitary-pads-for-rash-free-eco-friendly-periods-xl.jpg', 'Carmesi Eco-Conscious Sanitary Pads are designed for rash-free and eco-friendly periods. Made with plant-based materials, they are gentle on the skin and the environment.', 'Each pack contains 10 XL-sized pads.', 'Top-sheet made of corn fiber; biodegradable and compostable materials.', 'https://www.bigbasket.com/pd/40206862/carmesi-eco-conscious-sanitary-pads-for-rash-free-eco-friendly-periods-xl-10-pcs/')">
+                        <img src="" alt="Carmesi Eco-Conscious Sanitary Pads - XL (10 Pads)">
+                        <div class="product-name">Carmesi Eco-Conscious Sanitary Pads - XL (10 Pads)</div>  
+                        <div class="product-price">₹220</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Pee Safe 100% Organic Cotton Biodegradable Sanitary Pads - Regular (Pack of 10)', '₹299', 'https://www.peesafe.com/products/pee-safe-100-organic-cotton-ultra-thin-biodegradable-sanitary-pads-regular', 'Pee Safe’s 100% Organic Cotton Biodegradable Sanitary Pads are made from organic cotton and bamboo pulp, offering a comfortable and eco-friendly period experience.', 'Each pack contains 10 regular-sized pads.', 'Top sheet made of 100% organic cotton; core made of FSC certified bamboo pulp.', 'https://www.peesafe.com/products/pee-safe-100-organic-cotton-ultra-thin-biodegradable-sanitary-pads-regular')">
+                        <img src="" alt="Pee Safe 100% Organic Cotton Biodegradable Sanitary Pads - Regular (Pack of 10)">
+                        <div class="product-name">Pee Safe 100% Organic Cotton Biodegradable Sanitary Pads - Regular (Pack of 10)</div>  
+                        <div class="product-price">₹299</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Heyday Organic & Natural Ultra Thin Sanitary Pads - XL (14 Pads)', '₹195', 'https://www.bigbasket.com/media/uploads/p/l/40177312_1-heyday-organic-natural-sanitary-napkin-ultra-thin-xl.jpg', 'Heyday\'s Ultra Thin Sanitary Pads are 100% natural and organic, made from plant-based fibers of corn and bamboo. They are plastic, chemical, and perfume-free, ensuring a rash-free and eco-friendly period experience.', 'Each pack contains 14 XL-sized ultra-thin pads.', 'Made from corn and bamboo fiber; biodegradable within 2 years of disposal.', 'https://www.bigbasket.com/pd/40177312/heyday-organic-and-natural-sanitary-napkin-ultra-thin-xl-14-pcs/')">
+                        <img src="" alt="Heyday Organic & Natural Ultra Thin Sanitary Pads - XL (14 Pads)">
+                        <div class="product-name">Heyday Organic & Natural Ultra Thin Sanitary Pads - XL (14 Pads)</div>  
+                        <div class="product-price">₹195</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Noraa Ultra Soft 100% Organic & Biodegradable Sanitary Pads - XXL (12 Pads)', '₹269', 'https://m.media-amazon.com/images/I/61oYpVZzYzL.SL1500.jpg', 'Noraa\'s Ultra Soft Sanitary Pads are made from 100% organic cotton, ensuring a rash-free and comfortable period experience. These biodegradable pads decompose completely within six months, offering an eco-friendly alternative.', 'Each pack contains 12 XXL-sized pads.', 'Made from organic cotton, corn starch, virgin pulp, and bamboo.', 'https://www.amazon.in/dp/B09WRM69TS')">
+                        <img src="" alt="Noraa Ultra Soft 100% Organic & Biodegradable Sanitary Pads - XXL (12 Pads)">
+                        <div class="product-name">Noraa Ultra Soft 100% Organic & Biodegradable Sanitary Pads - XXL (12 Pads)</div>  
+                        <div class="product-price">₹269</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('aGIOGIO Portable Cordless Heating Pad', '₹2,499', 'https://via.placeholder.com/150', 'Wireless heating pad designed for menstrual cramps and lower back pain relief. Features adjustable heat settings and vibration massage.', 'Includes 1 rechargeable heating pad with adjustable straps.', 'Cordless, rechargeable, with fast heating technology and multiple heat levels.', 'https://www.example.com/product-link')">
+                        <img src="" alt="aGIOGIO Portable Cordless Heating Pad">
+                        <div class="product-name">aGIOGIO Portable Cordless Heating Pad</div>  
+                        <div class="product-price">₹2,499</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="product-card" onclick="openPopup('Norethisterone Tablets', '₹51.30', 'https://images-na.ssl-images-amazon.com/images/I/61oYpVZzYzL.SL1500.jpg', 'Primolut-N contains 5 mg of Norethisterone, used to treat menstrual disorders such as irregular periods and endometriosis.', 'Each pack contains 10 tablets.', 'Contains 5 mg of Norethisterone per tablet.', 'https://www.amazon.in/dp/B07WZP3NPQ')">
+                        <img src="" alt="Primolut-N Tablet">
+                        <div class="product-name">Norethisterone Tablets</div>  
+                        <div class="product-price">₹51.30</div>
+                    </div>
+                </div>
+                h4>Pregnancy Medicines</h4>
+                <br>
+            <div class="row">
+                <div class="col-md-3"><div class="product-card"><img src="https://tse3.mm.bing.net/th?id=OIP.C6_J9WaTsbeOkEBsL9CWigHaHa&w=200&h=200&c=7" alt=""><div class="product-name">Spellbound Prenatal Multivitamin</div>  <div class="product-price">₹1140 </div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://tse3.mm.bing.net/th?id=OIP.y9r-ihygmBO6lRgGdp3vxAHaHa&w=200&h=200&c=7" alt=""><div class="product-name">Dr. Berg  Prenatal Multivitamin</div>  <div class="product-price">₹1875 </div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://tse2.mm.bing.net/th?id=OIP.DhxaeIN1VSxwVxEweaTMyAHaHg&w=200&h=203&c=7" alt=""><div class="product-name">Tata 1mg Iron and Folic Acid Tablets</div>  <div class="product-price">₹150 </div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://tse1.mm.bing.net/th?id=OIP.mnfQQJK4o-jizsNyqyfzXAHaHa&w=200&h=200&c=7" alt=""><div class="product-name">Mankind  Pregnancy Test Kit</div>  <div class="product-price">₹50 </div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://tse3.mm.bing.net/th?id=OIP.ZyLDAqPIn7qma2aRPmAqMAHaHa&w=200&h=200&c=7" alt=""><div class="product-name">Himalaya Stretch Mark Cream for pregnancy</div>  <div class="product-price">₹360 </div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://tse3.mm.bing.net/th?id=OIP.km0rcurfhrESlzC5CV6brAHaHa&w=200&h=200&c=7"><div class="product-name">Emcure Ferium XT Tablets for pregnant women</div>  <div class="product-price">₹110 </div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://tse4.mm.bing.net/th?id=OIP.kF5JnVwSgoGMJUUjaRvXmwHaHa&w=200&h=200&c=7" alt=""><div class="product-name">Abbott Similac Mom Maternal Nutrition Supplement</div>  <div class="product-price">₹700 </div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://tse1.mm.bing.net/th?id=OIP.bUn975PeuMggVfkfc23fiAHaHa&w=200&h=200&c=7" alt=""><div class="product-name">One A Day Women's Prenatal Multivitamin</div>  <div class="product-price">₹1500 </div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://tse2.mm.bing.net/th?id=OIP.8p41MviBIqPXDq8YVoW-NQHaHa&w=200&h=200&c=7" alt=""><div class="product-name">Folic Acid Gummies High Strength</div>  <div class="product-price">₹1200 </div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://tse1.mm.bing.net/th?id=OIP.Ept07_xLReYiHKo9P6d1aAHaE8&w=200&h=133&c=7" alt=""><div class="product-name">Mamaxpert Pregnancy Test Kit</div>  <div class="product-price">₹100 </div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://tse1.mm.bing.net/th?id=OIP.cTYhhQ_btrxbJ_M344aaTAHaHg&w=200&h=203&c=7" alt=""><div class="product-name">Pregnabest Prenatal Multivitamins</div>  <div class="product-price">₹800 </div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://tse1.mm.bing.net/th?id=OIP.Yr4hxY3UXRTxKMciErV5KAAAAA&w=200&h=263&c=7" alt=""><div class="product-name">CARBAMIDE FORTE Prenatal Vitamins</div>  <div class="product-price">₹499 </div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://tse2.mm.bing.net/th?id=OIP.SbbIhS_ACPWL--zrqQRPYQHaHa&w=200&h=200&c=7" alt=""><div class="product-name">Purna Gummies Prenatal Vitamins</div>  <div class="product-price">₹500 </div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://tse4.mm.bing.net/th?id=OIP.6_RAvZAwD7nkIGb12pZoVQHaHa&w=200&h=200&c=7" alt=""><div class="product-name">Mamaearth Rich Body Crème for Stretch Marks </div>  <div class="product-price">₹500 </div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://tse1.mm.bing.net/th?id=OIP.gHgjbZSrJ03pMxEHjf5NvAHaHa&w=200&h=200&c=7" alt=""><div class="product-name">Apollo Pregaexpert Pregnancy Test Cassette</div>  <div class="product-price">₹45 </div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://tse4.mm.bing.net/th?id=OIP.9zX-cDpzeU2STQJsd-gtrAHaHa&w=200&h=200&c=7" alt=""><div class="product-name">i-Pill Emergency Contraceptive Pill</div>  <div class="product-price">₹110 </div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://tse3.mm.bing.net/th?id=OIP.GO4ygS68WL2fCxUs4zb0HAHaHa&w=200&h=200&c=7" alt=""><div class="product-name">SheNeed Prenatal Vitamins for pregnancy</div>  <div class="product-price">₹326 </div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://tse4.mm.bing.net/th?id=OIP.gM0Wmm4mW7lcc2VbV5ieIwAAAA&w=200&h=203&c=7" alt=""><div class="product-name">Conceive Plus Women's Fertility Support</div>  <div class="product-price">₹2000 </div></div></div>
+                <div class="col-md-3"><div class="product-card"><img src="https://tse1.mm.bing.net/th?id=OIP.RgAoK4d8nyAfg_U8PwtCNQHaHa&w=200&h=200&c=7" alt=""><div class="product-name">SheNeed Prenatal Multivitamin Drink</div>  <div class="product-price">₹600 </div></div></div>
+                
+            </div>
+        </div>           
+                
+                
+            </div>
+        </div>
+    </div>
+
+
+    
+
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <img id="popup-img" src="" alt="">
+            <div class="product-name" id="popup-name"></div>
+            <div class="product-price" id="popup-price"></div>
+            <div class="popup-description" id="popup-desc"></div>
+            <button class="buy-btn" id="popup-buy">Buy Now</button>
+            <button class="close-btn" onclick="closePopup()">Close</button>
+        </div>
+    </div>
+
+
+
+    <script>
+        function openPopup(name, price, imgSrc, usage, pack, ingredients, buyLink) {
+            document.getElementById('popup-name').innerText = name;
+            document.getElementById('popup-price').innerText = price;
+            document.getElementById('popup-img').src = imgSrc;
+            document.getElementById('popup-desc').innerHTML = <strong>Usage:</strong> ${usage}<br><strong>Contents:</strong> ${pack}<br><strong>Ingredients:</strong> ${ingredients};
+            document.getElementById('popup-buy').onclick = function() {
+                window.location.href = buyLink;
+            };
+            document.getElementById('popup').style.display = 'flex';
+            document.getElementById('main-content').classList.add('blur');
+        }
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('main-content').classList.remove('blur');
+        }
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
